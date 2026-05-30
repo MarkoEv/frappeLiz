@@ -1,12 +1,10 @@
 import "./styles/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Nav } from "./components/Nav.jsx";
-import { Hero } from "./components/Hero.jsx";
 import { Footer } from "./components/Footer.jsx";
-import { Carta } from "./components/Carta.jsx";
 import { Desayunos } from "./pages/Desayunos.jsx";
 import { Contacto } from "./pages/Contacto.jsx";
-
+import { Carta } from "./pages/Carta.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -17,20 +15,12 @@ function App() {
           </header>
           <main className="space-y-8">
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Hero />
-                    <Carta />
-                  </>
-                }
-              />
+              <Route path="/" element={<Carta />} />
               <Route path="/desayunos" element={<Desayunos />} />
               <Route path="/contacto" element={<Contacto />} />
             </Routes>
           </main>
-          <footer className="mt-8 hidden">
+          <footer>
             <Footer />
           </footer>
         </div>

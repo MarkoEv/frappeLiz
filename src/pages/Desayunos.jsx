@@ -258,7 +258,7 @@ export function Desayunos() {
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="!pb-10"
+          className="pb-10!"
         >
           {fotos.map(({ id, nombre, texto }) => (
             <SwiperSlide key={id}>
