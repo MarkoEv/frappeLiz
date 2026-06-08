@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -9,12 +10,12 @@ import {
   FaIceCream,
   FaCookieBite,
   FaAppleAlt,
-  FaUtensils,
-  FaTags,
   FaLeaf,
 } from "react-icons/fa";
 
 function Carta() {
+  const navigate = useNavigate();
+
   // animation h1
   const [displayText, setText] = React.useState("");
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -28,21 +29,19 @@ function Carta() {
   React.useEffect(() => {
     const currentPhrase = phrases[currentIndex];
     let i = 0;
+    let timeoutId;
     const timer = setInterval(() => {
       if (i < currentPhrase.length) {
         setText(currentPhrase.substring(0, i + 1));
         i++;
       } else {
         clearInterval(timer);
-        // espera unos segundos antes de cambiar la frase
         timeoutId = setTimeout(() => {
           setCurrentIndex((prev) => (prev + 1) % phrases.length);
           setText("");
         }, 5000);
       }
     }, 30);
-
-    let timeoutId;
 
     return () => {
       clearInterval(timer);
@@ -126,7 +125,7 @@ function Carta() {
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* texto con animation de escritura por segundo, "que se te antoja hoy" (varias frases) */}
+
         <h1
           className="mt-8 text-center font-bold tracking-wide text-[#7c4a31] p-0 text-2xl sm:text-3xl md:text-4xl lg:text-5xl min-h-[48px] sm:min-h-[64px] md:min-h-[72px] lg:min-h-[88px] flex items-center justify-center"
           aria-live="polite"
@@ -139,6 +138,7 @@ function Carta() {
           {Object.entries(categories).map(([key, category]) => (
             <button
               key={key}
+              onClick={() => navigate(`/carta/${key}`)}
               className="cursor-pointer flex flex-col items-center gap-3 rounded-xl border border-rose-200 bg-white px-3 py-4 sm:px-4 sm:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 lg:gap-4 transition-colors hover:bg-rose-50 active:scale-[0.98]"
             >
               <div className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 xl:h-20 xl:w-20 items-center justify-center rounded-full bg-rose-50">
