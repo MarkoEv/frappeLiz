@@ -71,11 +71,11 @@ function Carta() {
       ),
       label: "Frappés",
     },
-    licuados: {
+    esquimos: {
       icon: (
         <FaAppleAlt className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]" />
       ),
-      label: "Licuados",
+      label: "Esquimos",
     },
     snacks: {
       icon: (
