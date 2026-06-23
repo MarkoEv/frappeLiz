@@ -91,7 +91,7 @@ function ImgPlaceholder({ size = "full", label = "Foto" }) {
 
 export function Desayunos() {
   return (
-    <section className="w-full px-4 py-10 sm:px-6 lg:px-8">
+    <section className="w-full px-4 sm:px-6 lg:px-8">
       {/* ══ HERO ══════════════════════════════════════════════════════ */}
       <div className="relative mb-12 overflow-hidden rounded-3xl bg-[#7c4a31] px-6 py-12 text-center sm:py-16">
         {/* Decoración de fondo */}

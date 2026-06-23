@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { FiBook, FiMapPin } from "react-icons/fi";
 import { MdDeliveryDining } from "react-icons/md";
+import logo from "../../public/logos/vasos.png";
 
 const links = [
   { to: "/", label: "Carta", icon: <FiBook size={20} /> },
@@ -14,10 +15,10 @@ const links = [
 ];
 
 const phrases = [
-  "Frappés artesanales en Cuautepec 🧋",
-  "Desayunos con mucho amor ☀️",
-  "Tu café favorito, ahora a domicilio 🛵",
-  "Hecho con ingredientes frescos 🍓",
+  "Frappés extraordinarios",
+  "Para momentos extraordinarios ✨",
+  "Desayunos sorpresas",
+  "Para tu persona especial 💖",
 ];
 
 function useTypewriter(phrases, speed = 60, pause = 2200) {
@@ -64,10 +65,10 @@ function Nav() {
             to="/"
             className="flex items-center gap-2 select-none shrink-0"
           >
-            <span className="text-2xl leading-none">🧋</span>
+            <img src={logo} alt="Logo" className="w-8 h-8 sm:w-9 sm:h-9" />
             <div className="leading-tight">
               <span className="block text-base font-bold tracking-tight text-[#7c4a31]">
-                Frappé Liz
+                FrappéLiz
               </span>
               <span className="block text-[9px] font-medium uppercase tracking-widest text-[#b07a5a]">
                 Cuautepec, Gro.
@@ -109,7 +110,7 @@ function Nav() {
             to="/"
             className="flex items-center gap-2.5 select-none shrink-0"
           >
-            <span className="text-3xl leading-none">🧋</span>
+            <img src={logo} alt="Logo" className="w-9 h-9 sm:w-10 sm:h-10" />
             <div className="leading-tight">
               <span className="block text-xl font-bold tracking-tight text-[#7c4a31]">
                 Frappé Liz
@@ -153,7 +154,7 @@ function Nav() {
           to="/"
           className="flex items-center gap-2.5 select-none shrink-0"
         >
-          <span className="text-2xl leading-none">🧋</span>
+          <img src={logo} alt="Logo" className="w-10 h-10 sm:w-11 sm:h-11" />
           <div className="leading-tight">
             <span className="block text-lg font-bold tracking-tight text-[#7c4a31]">
               Frappé Liz

@@ -28,7 +28,7 @@ function Contacto() {
   const waLink = "https://wa.me/5216712345678"; // ← pon tu número real
 
   return (
-    <section className="w-full px-4 py-10 sm:px-6 lg:px-8">
+    <section className="w-full px-4  sm:px-6 lg:px-8">
       {/* Encabezado */}
       <div className="mb-8 text-center">
         <p className="mb-1 text-xs uppercase tracking-widest text-[#b07a5a]">

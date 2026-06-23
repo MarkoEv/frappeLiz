@@ -106,28 +106,8 @@ function Carta() {
   return (
     <>
       <section className="rounded-2xl bg-white/90 p-8 shadow-[0_22px_60px_rgba(124,74,49,0.1)] md:p-12">
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          spaceBetween={16}
-          slidesPerView={1}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          loop
-          className="overflow-hidden rounded-3xl"
-        >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.src}>
-              <img
-                className="w-full object-cover h-40 sm:h-48 md:h-64 lg:h-80"
-                src={slide.src}
-                alt={slide.alt}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
         <h1
-          className="mt-4 text-center font-bold tracking-wide text-[#7c4a31] p-0 text-2xl sm:text-3xl md:text-4xl lg:text-5xl min-h-[48px] sm:min-h-[64px] md:min-h-[72px] lg:min-h-[88px] flex items-center justify-center"
+          className="text-center font-bold tracking-wide text-[#7c4a31] p-0 text-2xl sm:text-3xl md:text-4xl lg:text-5xl min-h-[48px] sm:min-h-[64px] md:min-h-[72px] lg:min-h-[88px] flex items-center justify-center"
           aria-live="polite"
           aria-atomic="true"
         >
