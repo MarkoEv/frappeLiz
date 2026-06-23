@@ -1,108 +1,96 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { FiMenu, FiX, FiBook, FiMapPin } from "react-icons/fi";
+import { FiBook, FiMapPin } from "react-icons/fi";
 import { MdDeliveryDining } from "react-icons/md";
 
 const links = [
   { to: "/", label: "Carta", icon: <FiBook size={20} /> },
   {
     to: "/desayunos",
-    label: "Desayunos",
+    label: "Desayuno",
     icon: <MdDeliveryDining size={22} />,
   },
-  { to: "/contacto", label: "Contacto", icon: <FiMapPin size={20} /> },
+  { to: "/contacto", label: "Contáctame", icon: <FiMapPin size={20} /> },
 ];
 
-function Nav() {
-  const [open, setOpen] = useState(false);
-  const { pathname } = useLocation();
+const phrases = [
+  "Frappés artesanales en Cuautepec 🧋",
+  "Desayunos con mucho amor ☀️",
+  "Tu café favorito, ahora a domicilio 🛵",
+  "Hecho con ingredientes frescos 🍓",
+];
+
+function useTypewriter(phrases, speed = 60, pause = 2200) {
+  const [display, setDisplay] = useState("");
+  const [phraseIdx, setPhraseIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+    const current = phrases[phraseIdx];
+    let timeout;
+
+    if (!deleting && charIdx < current.length) {
+      timeout = setTimeout(() => setCharIdx((c) => c + 1), speed);
+    } else if (!deleting && charIdx === current.length) {
+      timeout = setTimeout(() => setDeleting(true), pause);
+    } else if (deleting && charIdx > 0) {
+      timeout = setTimeout(() => setCharIdx((c) => c - 1), speed / 2);
+    } else if (deleting && charIdx === 0) {
+      setDeleting(false);
+      setPhraseIdx((i) => (i + 1) % phrases.length);
+    }
+
+    setDisplay(current.slice(0, charIdx));
+    return () => clearTimeout(timeout);
+  }, [charIdx, deleting, phraseIdx, phrases, speed, pause]);
+
+  return display;
+}
+
+function Nav() {
+  const text = useTypewriter(phrases);
 
   return (
-    <>
-      <nav className="sticky top-0 z-40 w-full rounded-2xl bg-white/80 px-5 py-3 shadow-[0_4px_24px_rgba(124,74,49,0.10)] backdrop-blur-md sm:px-6">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <NavLink to="/" className="flex items-center gap-2.5 select-none">
+    <nav
+      className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md shadow-[0_4px_24px_rgba(124,74,49,0.12)]
+      rounded-2xl px-4 py-3 sm:px-5 lg:px-6"
+    >
+      {/* ── MÓVIL (< 768px): dos filas ── */}
+      <div className="flex flex-col gap-2 md:hidden">
+        {/* Fila 1: logo + frase */}
+        <div className="flex items-center gap-3">
+          <NavLink
+            to="/"
+            className="flex items-center gap-2 select-none shrink-0"
+          >
             <span className="text-2xl leading-none">🧋</span>
             <div className="leading-tight">
-              <span className="block text-lg font-bold tracking-tight text-[#7c4a31]">
+              <span className="block text-base font-bold tracking-tight text-[#7c4a31]">
                 Frappé Liz
               </span>
-              <span className="block text-[10px] font-medium uppercase tracking-widest text-[#b07a5a]">
+              <span className="block text-[9px] font-medium uppercase tracking-widest text-[#b07a5a]">
                 Cuautepec, Gro.
               </span>
             </div>
           </NavLink>
-
-          {/* Botones grandes — desktop */}
-          <ul className="hidden items-center gap-2 sm:flex">
-            {links.map(({ to, label, icon }) => (
-              <li key={to}>
-                <NavLink
-                  to={to}
-                  end={to === "/"}
-                  className={({ isActive }) =>
-                    `flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all
-                    ${
-                      isActive
-                        ? "bg-[#7c4a31] text-white shadow-md"
-                        : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100 hover:text-[#7c4a31]"
-                    }`
-                  }
-                >
-                  {icon}
-                  {label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
-          {/* Hamburguesa — móvil */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="flex h-9 w-9 items-center justify-center rounded-xl text-[#7c4a31] transition hover:bg-rose-50 sm:hidden"
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          >
-            {open ? <FiX size={22} /> : <FiMenu size={22} />}
-          </button>
+          <div className="flex-1 min-w-0 rounded-xl border border-rose-100 bg-rose-50/60 px-3 py-2">
+            <p className="text-xs font-medium text-[#7c4a31] truncate">
+              {text}
+              <span className="inline-block w-0.5 h-3.5 bg-[#7c4a31] ml-0.5 animate-pulse align-middle" />
+            </p>
+          </div>
         </div>
-      </nav>
-
-      {/* Overlay */}
-      <div
-        className={`fixed inset-0 z-30 bg-black/30 backdrop-blur-sm transition-opacity duration-200 sm:hidden
-          ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-        onClick={() => setOpen(false)}
-      />
-
-      {/* Panel móvil */}
-      <div
-        className={`fixed left-0 right-0 top-[72px] z-30 mx-4 rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(124,74,49,0.18)] transition-all duration-300 sm:hidden
-          ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"}`}
-      >
-        <ul className="flex flex-col gap-2">
+        {/* Fila 2: botones */}
+        <ul className="flex gap-2">
           {links.map(({ to, label, icon }) => (
-            <li key={to}>
+            <li key={to} className="flex-1">
               <NavLink
                 to={to}
                 end={to === "/"}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 rounded-xl px-4 py-3.5 text-sm font-semibold transition-colors
-                  ${
-                    isActive
-                      ? "bg-[#7c4a31] text-white"
-                      : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100"
-                  }`
+                  `flex items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-xs font-semibold transition-all w-full
+                  ${isActive ? "bg-[#7c4a31] text-white shadow-md" : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100 hover:text-[#7c4a31]"}`
                 }
               >
                 {icon}
@@ -112,7 +100,98 @@ function Nav() {
           ))}
         </ul>
       </div>
-    </>
+
+      {/* ── TABLET (768px – 1023px): logo arriba centrado, frase + botones abajo en fila ── */}
+      <div className="hidden md:flex lg:hidden flex-col gap-3">
+        {/* Fila 1: logo centrado + frase */}
+        <div className="flex items-center gap-4">
+          <NavLink
+            to="/"
+            className="flex items-center gap-2.5 select-none shrink-0"
+          >
+            <span className="text-3xl leading-none">🧋</span>
+            <div className="leading-tight">
+              <span className="block text-xl font-bold tracking-tight text-[#7c4a31]">
+                Frappé Liz
+              </span>
+              <span className="block text-[10px] font-medium uppercase tracking-widest text-[#b07a5a]">
+                Cuautepec, Gro.
+              </span>
+            </div>
+          </NavLink>
+          <div className="flex-1 min-w-0 rounded-xl border border-rose-100 bg-rose-50/60 px-4 py-2.5">
+            <p className="text-sm font-medium text-[#7c4a31] truncate">
+              {text}
+              <span className="inline-block w-0.5 h-4 bg-[#7c4a31] ml-0.5 animate-pulse align-middle" />
+            </p>
+          </div>
+        </div>
+        {/* Fila 2: botones más grandes con descripción */}
+        <ul className="flex gap-3">
+          {links.map(({ to, label, icon }) => (
+            <li key={to} className="flex-1">
+              <NavLink
+                to={to}
+                end={to === "/"}
+                className={({ isActive }) =>
+                  `flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all w-full
+                  ${isActive ? "bg-[#7c4a31] text-white shadow-md" : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100 hover:text-[#7c4a31]"}`
+                }
+              >
+                {icon}
+                {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* ── DESKTOP (≥ 1024px): una sola fila ── */}
+      <div className="hidden lg:flex items-center gap-4">
+        {/* Logo */}
+        <NavLink
+          to="/"
+          className="flex items-center gap-2.5 select-none shrink-0"
+        >
+          <span className="text-2xl leading-none">🧋</span>
+          <div className="leading-tight">
+            <span className="block text-lg font-bold tracking-tight text-[#7c4a31]">
+              Frappé Liz
+            </span>
+            <span className="block text-[10px] font-medium uppercase tracking-widest text-[#b07a5a]">
+              Cuautepec, Gro.
+            </span>
+          </div>
+        </NavLink>
+
+        {/* Frase animada — centro */}
+        <div className="flex-1 min-w-0 rounded-xl border border-rose-100 bg-rose-50/60 px-4 py-2.5">
+          <p className="text-sm font-medium text-[#7c4a31] truncate">
+            {text}
+            <span className="inline-block w-0.5 h-4 bg-[#7c4a31] ml-0.5 animate-pulse align-middle" />
+          </p>
+        </div>
+
+        {/* Botones — derecha */}
+        <ul className="flex items-center gap-2 shrink-0">
+          {links.map(({ to, label, icon }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                end={to === "/"}
+                className={({ isActive }) =>
+                  `flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all
+                  ${isActive ? "bg-[#7c4a31] text-white shadow-md" : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100 hover:text-[#7c4a31]"}`
+                }
+              >
+                {icon}
+                {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
   );
 }
 

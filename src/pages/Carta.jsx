@@ -127,7 +127,7 @@ function Carta() {
         </Swiper>
 
         <h1
-          className="mt-8 text-center font-bold tracking-wide text-[#7c4a31] p-0 text-2xl sm:text-3xl md:text-4xl lg:text-5xl min-h-[48px] sm:min-h-[64px] md:min-h-[72px] lg:min-h-[88px] flex items-center justify-center"
+          className="mt-4 text-center font-bold tracking-wide text-[#7c4a31] p-0 text-2xl sm:text-3xl md:text-4xl lg:text-5xl min-h-[48px] sm:min-h-[64px] md:min-h-[72px] lg:min-h-[88px] flex items-center justify-center"
           aria-live="polite"
           aria-atomic="true"
         >
