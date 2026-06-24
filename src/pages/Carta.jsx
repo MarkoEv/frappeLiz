@@ -24,8 +24,8 @@ function Carta() {
 
   const phrases = [
     "¿Qué se te antoja hoy?",
-    "¡Haz tu elección!",
-    "¡Disfruta tu bebida!",
+    "Explora nuestra carta",
+    "Elige tu favorito",
   ];
 
   React.useEffect(() => {
@@ -41,7 +41,7 @@ function Carta() {
         timeoutId = setTimeout(() => {
           setCurrentIndex((prev) => (prev + 1) % phrases.length);
           setText("");
-        }, 5000);
+        }, 10000);
       }
     }, 30);
 
@@ -74,27 +74,15 @@ function Carta() {
       icon: <RiDrinks2Line className={iconClass} />,
       label: "Frappés",
     },
-
-    esquimos: {
-      icon: <FaIceCream className={iconClass} />,
-      label: "Esquimos",
-    },
-
-    snacks: {
-      icon: <FaCookieBite className={iconClass} />,
-      label: "Snacks",
+    hamburguesas: {
+      icon: <FaHamburger className={iconClass} />,
+      label: "Hamburguesas",
     },
 
     tortas: {
       icon: <MdBakeryDining className={iconClass} />,
       label: "Tortas",
     },
-
-    hamburguesas: {
-      icon: <FaHamburger className={iconClass} />,
-      label: "Hamburguesas",
-    },
-
     waffles: {
       icon: <MdOutlineFreeBreakfast className={iconClass} />,
       label: "Waffles",
@@ -103,6 +91,16 @@ function Carta() {
     crepas: {
       icon: <FaCookieBite className={iconClass} />,
       label: "Crepas",
+    },
+
+    esquimos: {
+      icon: <RiDrinks2Line className={iconClass} />,
+      label: "Esquimos",
+    },
+
+    snacks: {
+      icon: <FaCookieBite className={iconClass} />,
+      label: "Snacks",
     },
 
     bebidas: {

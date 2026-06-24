@@ -43,7 +43,7 @@ function Footer() {
       </div>
 
       <p className="text-xs text-[#b07a5a]">
-        © {new Date().getFullYear()} FrappéLiz
+        © {new Date().getFullYear()} Frappé Liz
       </p>
       {/* creador */}
       <div className="flex items-center gap-2">

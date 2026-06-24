@@ -34,46 +34,6 @@ const frappes = [
     desc: "Fresas frescas, leche y un toque de limón.",
     price: "$70",
   },
-  {
-    id: 5,
-    tag: "frutal",
-    emoji: "🥭",
-    name: "Frappé mango",
-    desc: "Mango de temporada con leche de coco y hielo.",
-    price: "$72",
-  },
-  {
-    id: 6,
-    tag: "frutal",
-    emoji: "🫐",
-    name: "Frappé blueberry",
-    desc: "Arándanos, yogurt griego y miel natural.",
-    price: "$75",
-  },
-  {
-    id: 7,
-    tag: "especial",
-    emoji: "🍵",
-    name: "Frappé matcha",
-    desc: "Té verde matcha ceremonial con leche de avena.",
-    price: "$80",
-  },
-  {
-    id: 8,
-    tag: "especial",
-    emoji: "🌰",
-    name: "Frappé avellana",
-    desc: "Crema de avellana, espresso y leche espumada.",
-    price: "$78",
-  },
-  {
-    id: 9,
-    tag: "especial",
-    emoji: "🍪",
-    name: "Frappé oreo",
-    desc: "Galleta oreo triturada, leche y crema batida.",
-    price: "$75",
-  },
 ];
 
 const tagBg = {
@@ -85,7 +45,6 @@ const tagBg = {
 const filters = [
   { key: "todos", label: "Todos" },
   { key: "clasico", label: "Clásico" },
-  { key: "frutal", label: "Frutal" },
   { key: "especial", label: "Especial" },
 ];
 
@@ -104,15 +63,13 @@ function Frappes() {
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 rounded-xl border border-rose-200 bg-white px-4 py-2 text-sm text-[#7c4a31] transition-colors hover:bg-rose-50 active:scale-[0.98]"
         >
-          ← Carta
+          ← Volver
         </button>
         <div>
           <h1 className="font-bold text-2xl sm:text-3xl text-[#7c4a31] leading-tight">
             Frappés
           </h1>
-          <p className="text-sm text-[#b07a5a] mt-0.5">
-            Bebidas frías preparadas al momento
-          </p>
+          <p className="text-sm text-[#b07a5a] mt-0.5">Bebidas frías</p>
         </div>
       </div>
 
@@ -169,9 +126,6 @@ function Frappes() {
                   <span className="text-sm font-bold text-[#7c4a31]">
                     {frappe.price}
                   </span>
-                  <button className="rounded-lg bg-[#7c4a31] px-3 py-1.5 text-[11px] font-semibold text-white transition-opacity hover:opacity-80 active:scale-[0.97]">
-                    Ordenar
-                  </button>
                 </div>
               </div>
             </div>

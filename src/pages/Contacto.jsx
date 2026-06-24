@@ -13,12 +13,13 @@ import {
   RiTiktokLine,
 } from "react-icons/ri";
 
+import liz from "../../public/desayunos/liz.jpeg";
+
 // Coordenadas de Frappé Liz, Cuautepec, Gro.
 const COORDS = { lat: 16.7008, lng: -99.0172 };
 const DIRECCION = "Rubén Mora, Barrio Primero, 41840 Cuautepec, Gro., México";
 const PLACE_QUERY = "Frappé+Liz+Cuautepec+Guerrero";
 
-const MAP_EMBED = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.5!2d${COORDS.lng}!3d${COORDS.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z${PLACE_QUERY}!5e0!3m2!1ses!2smx!4v1700000000000`;
 const COMO_LLEGAR = `https://www.google.com/maps/dir/?api=1&destination=${PLACE_QUERY}&destination_place_id=ChIJ`;
 
 const horarios = [
@@ -40,7 +41,6 @@ function Contacto() {
           Contáctanos
         </h1>
       </div>
-
       {/* Grid principal */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {/* ── WhatsApp + Redes ── */}
@@ -49,7 +49,7 @@ function Contacto() {
             Escríbenos
           </p>
           <p className="mb-5 text-[15px] text-[#5b3c2d]">
-            Pedidos, reservaciones y dudas
+            Pedidos, reservaciones y dudas.
           </p>
 
           <a
@@ -91,11 +91,11 @@ function Contacto() {
         </div>
 
         {/* ── Mapa + Dirección ── */}
-        <div className="flex flex-col rounded-2xl bg-white p-5 shadow-[0_8px_30px_rgba(124,74,49,0.10)]">
+        <div className="flex flex-col rounded-2xl bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+          {" "}
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[#b07a5a]">
             Ubicación
           </p>
-
           {/* Mapa — clic abre "cómo llegar" */}
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent("Frappé Liz, Rubén Mora, Barrio Primero, Cuautepec, Gro.")}`}
@@ -104,15 +104,10 @@ function Contacto() {
             className="group relative block overflow-hidden rounded-xl"
             title="Cómo llegar a Frappé Liz"
           >
-            <iframe
-              title="Mapa Frappé Liz"
-              src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d${COORDS.lng}!3d${COORDS.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ca43bfac0f91d5%3A0x1b2c3d4e5f6a7b8c!2sFrapp%C3%A9%20Liz!5e0!3m2!1ses!2smx!4v1700000000000`}
-              width="100%"
-              height="185"
-              style={{ border: 0, pointerEvents: "none" }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full"
+            <img
+              src={liz}
+              alt="Ubicación Frappé Liz"
+              className="w-full h-[185px] object-cover rounded-xl"
             />
             {/* Overlay al hover */}
             <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
@@ -122,7 +117,6 @@ function Contacto() {
               </span>
             </div>
           </a>
-
           <div className="mt-4 space-y-3">
             <div className="flex items-start gap-3">
               <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-50 text-[#7c4a31]">
@@ -148,6 +142,24 @@ function Contacto() {
                 <p className="text-sm font-medium text-[#3a2a20]">
                   745 111 9782
                 </p>
+              </div>
+            </div>
+
+            {/* boton de como llegar */}
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-50 text-[#7c4a31]">
+                <FiExternalLink size={15} />
+              </span>
+              <div>
+                <p className="text-xs text-[#b07a5a]">Cómo llegar</p>
+                <a
+                  href={COMO_LLEGAR}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-[#3a2a20] underline hover:text-[#7c4a31]"
+                >
+                  Abrir en Google Maps
+                </a>
               </div>
             </div>
           </div>
@@ -182,9 +194,17 @@ function Contacto() {
             ))}
           </div>
         </div>
+      </div>{" "}
+      {/* boton para subir a nav */}
+      <div className="flex justify-center mt-8 md:hidden lg:hidden">
+        <a
+          href="#top"
+          className="inline-flex items-center gap-2 rounded-2xl bg-[#7c4a31] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#5b3c2d] active:scale-95"
+        >
+          ↑ Volver arriba
+        </a>
       </div>
     </section>
   );
 }
-
 export { Contacto };

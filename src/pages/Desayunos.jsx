@@ -7,6 +7,16 @@ import "swiper/css/effect-fade";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiPackage, FiClock, FiStar, FiHeart } from "react-icons/fi";
 import { LuPartyPopper } from "react-icons/lu";
+import { MdDeliveryDining } from "react-icons/md";
+
+import {
+  FaChalkboardTeacher,
+  FaBirthdayCake,
+  FaUserFriends,
+  FaGraduationCap,
+  FaHeart,
+  FaGift,
+} from "react-icons/fa";
 
 // imagenes desayunos
 import desayuno1 from "../../public/desayunos/desayuno1.jpeg";
@@ -33,6 +43,8 @@ import entrega4 from "../../public/desayunos/entregas4.jpeg";
 import entrega5 from "../../public/desayunos/entregas5.jpeg";
 import entrega6 from "../../public/desayunos/entregas6.jpeg";
 
+import liz from "../../public/desayunos/liz.jpeg";
+
 const entregas = [entrega1, entrega2, entrega3, entrega4, entrega5, entrega6];
 
 // ── Configura tu número aquí ──────────────────────────────────────────
@@ -40,48 +52,77 @@ const WA_NUMBER = "527451119782";
 const waLink = (msg) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 
-// ── Eventos especiales ─────────────────────────────────────────────────
+const baseIcon = "text-[#7c4a31] transition-transform duration-300";
+
+const iconClass =
+  "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl " +
+  "text-[#7c4a31] transition-all duration-300 group-hover:scale-110"; // ── Eventos especiales ─────────────────────────────────────────────────
 const eventos = [
-  { icon: "👩‍🏫", label: "Día del Maestro", fecha: "15 mayo" },
-  { icon: "💐", label: "Día de las Madres", fecha: "10 mayo" },
-  { icon: "👨‍👩‍👧", label: "Día del Padre", fecha: "15 jun" },
-  { icon: "🎓", label: "Graduaciones", fecha: "Jun – Jul" },
-  { icon: "💑", label: "San Valentín", fecha: "14 feb" },
-  { icon: "🎂", label: "Cumpleaños", fecha: "Todo el año" },
+  {
+    icon: <FaChalkboardTeacher className={baseIcon} />,
+    label: "Día del Maestro",
+    fecha: "15 mayo",
+  },
+  {
+    icon: <FaGift className={baseIcon} />,
+    label: "Día de las Madres",
+    fecha: "10 mayo",
+  },
+  {
+    icon: <FaUserFriends className={baseIcon} />,
+    label: "Día del Padre",
+    fecha: "15 jun",
+  },
+  {
+    icon: <FaGraduationCap className={baseIcon} />,
+    label: "Graduaciones",
+    fecha: "Jun – Jul",
+  },
+  {
+    icon: <FaHeart className={baseIcon} />,
+    label: "San Valentín",
+    fecha: "14 feb",
+  },
+  {
+    icon: <FaBirthdayCake className={baseIcon} />,
+    label: "Cumpleaños",
+    fecha: "Todo el año",
+  },
 ];
 
 // ── Fotos de clientes (placeholders) ──────────────────────────────────
 const fotos = [
   {
     id: 1,
-    texto: "¡El mejor desayuno sorpresa que he recibido! 😍",
+    texto: "Un detalle perfecto para sorprender en cualquier ocasión.",
   },
   {
     id: 2,
-    texto: "Llegó súper bien presentado, me encantó 🧁",
+    texto: "Presentación cuidada y sabor que supera expectativas.",
   },
   {
     id: 3,
-    texto: "Lo pedí para el día de las madres y quedó hermoso 💐",
+    texto: "Ideal para celebrar momentos especiales con estilo.",
   },
   {
     id: 4,
-    texto: "Riquísimo y muy detallado, lo recomiendo 100% ⭐",
+    texto: "Calidad, sabor y presentación en un solo detalle.",
   },
   {
     id: 5,
-    texto: "La entrega fue puntual y el frappé delicioso 🥤",
+    texto: "Entrega puntual y experiencia completamente satisfactoria.",
   },
   {
     id: 6,
-    texto: "Mi pareja quedó encantada con la sorpresa 💖",
+    texto: "La mejor forma de hacer especial cualquier mañana.",
   },
 ];
 
 // ── Beneficios de entrega ──────────────────────────────────────────────
 const beneficios = [
   {
-    icon: <FiPackage size={22} />,
+    // icono de moto
+    icon: <MdDeliveryDining size={22} />,
     titulo: "Entrega a domicilio",
     desc: "Llevamos tu desayuno sorpresa directo a la puerta",
   },
@@ -101,44 +142,47 @@ const beneficios = [
     desc: "Elige lo que más le gusta a esa persona especial",
   },
 ];
-
+liz;
 export function Desayunos() {
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8">
       {/* ══ HERO ══════════════════════════════════════════════════════ */}
-      <div className="relative mb-12 overflow-hidden rounded-3xl bg-[#7c4a31] px-6 py-12 text-center sm:py-16">
-        {/* Decoración de fondo */}
-        <span className="pointer-events-none absolute -left-8 -top-8 text-[120px] opacity-10 select-none">
-          🧋
-        </span>
-        <span className="pointer-events-none absolute -right-8 -bottom-8 text-[120px] opacity-10 select-none">
-          🍓
-        </span>
+      <div className="relative mb-12 overflow-hidden rounded-3xl text-center">
+        {/* Imagen */}
+        <img
+          src={liz}
+          alt="Desayuno sorpresa"
+          className="h-[500px] w-full object-cover"
+        />
 
-        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-rose-200">
-          desayunos sorpresa
-        </p>
-        <h1 className="mb-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-          Haz que su mañana
-          <br />
-          <span className="text-rose-300">sea inolvidable</span>
-        </h1>
-        <p className="mx-auto mb-8 max-w-md text-[15px] text-rose-100/90">
-          Desayunos preparados con amor, presentación impecable y entrega a
-          domicilio en Cuautepec. Porque los detalles importan. 🫶
-        </p>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
-        <a
-          href={waLink("Hola! Quiero pedir un desayuno sorpresa")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 rounded-2xl bg-[#25D366] px-7 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#1ebe5d] active:scale-95"
-        >
-          <FaWhatsapp size={22} />
-          Pedir mi desayuno sorpresa
-        </a>
+        {/* Contenido */}
+        <div className="absolute inset-0 flex items-end">
+          <div className="p-6 sm:p-10 lg:p-12">
+            <h1 className="mb-3 max-w-2xl text-3xl font-bold text-white sm:text-5xl">
+              Haz que su mañana
+              <span className="block text-rose-300">sea inolvidable</span>
+            </h1>
+
+            <p className="mb-6 max-w-lg text-sm leading-relaxed text-white/90 sm:text-base">
+              Desayunos preparados cuidadosamente, presentación especial y
+              entrega a domicilio para sorprender a quien más quieres.
+            </p>
+
+            <a
+              href={waLink("Hola! Quiero pedir un desayuno sorpresa")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-2xl bg-[#25D366] px-7 py-4 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#1ebe5d]"
+            >
+              <FaWhatsapp size={20} />
+              Contáctanos
+            </a>
+          </div>
+        </div>
       </div>
-
       {/* ══ BENEFICIOS DE ENTREGA ═════════════════════════════════════ */}
       <div className="mb-12">
         <p className="mb-1 text-center text-xs uppercase tracking-widest text-[#b07a5a]">
@@ -167,14 +211,9 @@ export function Desayunos() {
 
       {/* ══ GALERÍA CON SWIPER ════════════════════════════════════════ */}
       <div className="mb-16">
-        <p className="mb-2 text-center text-xs uppercase tracking-[0.3em] text-[#b07a5a]">
-          galería premium
-        </p>
-
         <h2 className="mb-3 text-center text-3xl font-bold text-[#7c4a31]">
           Nuestros Desayunos
         </h2>
-
         <p className="mx-auto mb-8 max-w-2xl text-center text-sm text-[#9a6a50]">
           Cada detalle está preparado cuidadosamente para sorprender a esa
           persona especial.
@@ -197,22 +236,18 @@ export function Desayunos() {
         >
           {desayunos.map((img, index) => (
             <SwiperSlide key={index}>
-              <div className="group overflow-hidden rounded-3xl bg-white shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+              <div className="group overflow-hidden rounded-3xl bg-white shadow-lg transition duration-500 ">
                 <div className="relative overflow-hidden">
                   <img
                     src={img}
                     alt={`Desayuno ${index + 1}`}
-                    className="h-[280px] w-full object-cover transition duration-700 group-hover:scale-110"
+                    className="h-[280px] w-full object-cover "
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
                 </div>
 
                 <div className="p-4">
-                  <h3 className="font-semibold text-[#5b3c2d]">
-                    Desayuno Sorpresa #{index + 1}
-                  </h3>
-
                   <p className="mt-1 text-sm text-[#9a6a50]">
                     Preparado con ingredientes frescos y presentación especial.
                   </p>
@@ -233,16 +268,14 @@ export function Desayunos() {
         </div>
         <p className="mx-auto mb-7 max-w-lg text-center text-sm text-[#9a6a50]">
           Anticipa tu pedido y sorprende a quien más quieres en el momento
-          perfecto 🎉
+          perfecto.
         </p>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {eventos.map(({ icon, label, fecha }) => (
             <a
               key={label}
-              href={waLink(
-                `Hola! Me interesa un desayuno sorpresa para ${label} (${fecha}) 🎉`,
-              )}
+              href={waLink(`Hola! Me interesa un desayuno sorpresa 🎉`)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 rounded-2xl bg-white px-3 py-4 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md active:scale-95"
@@ -315,6 +348,15 @@ export function Desayunos() {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+      {/* boton para subir a nav */}
+      <div className="flex justify-center mt-8">
+        <a
+          href="#top"
+          className="inline-flex items-center gap-2 rounded-2xl bg-[#7c4a31] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#5b3c2d] active:scale-95"
+        >
+          ↑ Volver arriba
+        </a>
       </div>
     </section>
   );

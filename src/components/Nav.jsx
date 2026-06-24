@@ -11,17 +11,16 @@ const links = [
     label: "Desayunos",
     icon: <MdDeliveryDining size={22} />,
   },
-  { to: "/contacto", label: "Contáctame", icon: <FiMapPin size={20} /> },
+  { to: "/contacto", label: "Contacto", icon: <FiMapPin size={20} /> },
 ];
 
 const phrases = [
-  "Frappés extraordinarios",
-  "Para momentos extraordinarios ✨",
-  "Desayunos sorpresas",
-  "Para tu persona especial 💖",
+  "Sabores que enamoran en cada sorbo",
+  "Momentos dulces que merecen celebrarse",
+  "Frappés preparados con pasión y calidad",
+  "Detalles especiales para personas especiales",
 ];
-
-function useTypewriter(phrases, speed = 60, pause = 2200) {
+function useTypewriter(phrases, speed = 30, pause = 4200) {
   const [display, setDisplay] = useState("");
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
@@ -68,15 +67,12 @@ function Nav() {
             <img src={logo} alt="Logo" className="w-8 h-8 sm:w-9 sm:h-9" />
             <div className="leading-tight">
               <span className="block text-base font-bold tracking-tight text-[#7c4a31]">
-                FrappéLiz
-              </span>
-              <span className="block text-[9px] font-medium uppercase tracking-widest text-[#b07a5a]">
-                Cuautepec, Gro.
+                Frappé Liz
               </span>
             </div>
           </NavLink>
           <div className="flex-1 min-w-0 rounded-xl border border-rose-100 bg-rose-50/60 px-3 py-2">
-            <p className="text-xs font-medium text-[#7c4a31] truncate">
+            <p className="text-[8px] font-medium text-[#7c4a31] truncate">
               {text}
               <span className="inline-block w-0.5 h-3.5 bg-[#7c4a31] ml-0.5 animate-pulse align-middle" />
             </p>
