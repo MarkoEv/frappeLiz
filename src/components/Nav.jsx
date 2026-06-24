@@ -8,7 +8,7 @@ const links = [
   { to: "/", label: "Carta", icon: <FiBook size={20} /> },
   {
     to: "/desayunos",
-    label: "Desayuno",
+    label: "Desayunos",
     icon: <MdDeliveryDining size={22} />,
   },
   { to: "/contacto", label: "Contáctame", icon: <FiMapPin size={20} /> },

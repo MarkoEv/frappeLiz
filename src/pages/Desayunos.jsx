@@ -8,8 +8,35 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FiPackage, FiClock, FiStar, FiHeart } from "react-icons/fi";
 import { LuPartyPopper } from "react-icons/lu";
 
+// imagenes desayunos
+import desayuno1 from "../../public/desayunos/desayuno1.jpeg";
+import desayuno2 from "../../public/desayunos/desayuno2.jpeg";
+import desayuno3 from "../../public/desayunos/desayuno3.jpeg";
+import desayuno4 from "../../public/desayunos/desayuno4.jpeg";
+import desayuno5 from "../../public/desayunos/desayuno5.jpeg";
+import desayuno6 from "../../public/desayunos/desayuno6.jpeg";
+
+const desayunos = [
+  desayuno1,
+  desayuno2,
+  desayuno3,
+  desayuno4,
+  desayuno5,
+  desayuno6,
+];
+
+// 6 imagenes de entregas
+import entrega1 from "../../public/desayunos/entregas1.jpeg";
+import entrega2 from "../../public/desayunos/entregas2.jpeg";
+import entrega3 from "../../public/desayunos/entregas3.jpeg";
+import entrega4 from "../../public/desayunos/entregas4.jpeg";
+import entrega5 from "../../public/desayunos/entregas5.jpeg";
+import entrega6 from "../../public/desayunos/entregas6.jpeg";
+
+const entregas = [entrega1, entrega2, entrega3, entrega4, entrega5, entrega6];
+
 // ── Configura tu número aquí ──────────────────────────────────────────
-const WA_NUMBER = "5216712345678";
+const WA_NUMBER = "527451119782";
 const waLink = (msg) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 
@@ -27,28 +54,27 @@ const eventos = [
 const fotos = [
   {
     id: 1,
-    nombre: "María G.",
     texto: "¡El mejor desayuno sorpresa que he recibido! 😍",
   },
   {
     id: 2,
-    nombre: "Ana L.",
     texto: "Llegó súper bien presentado, me encantó 🧁",
   },
   {
     id: 3,
-    nombre: "Karla M.",
     texto: "Lo pedí para el día de las madres y quedó hermoso 💐",
   },
   {
     id: 4,
-    nombre: "Sofía R.",
     texto: "Riquísimo y muy detallado, lo recomiendo 100% ⭐",
   },
   {
     id: 5,
-    nombre: "Fernanda T.",
     texto: "La entrega fue puntual y el frappé delicioso 🥤",
+  },
+  {
+    id: 6,
+    texto: "Mi pareja quedó encantada con la sorpresa 💖",
   },
 ];
 
@@ -75,19 +101,6 @@ const beneficios = [
     desc: "Elige lo que más le gusta a esa persona especial",
   },
 ];
-
-// ── Placeholder para imágenes ──────────────────────────────────────────
-function ImgPlaceholder({ size = "full", label = "Foto" }) {
-  const cls = size === "sq" ? "aspect-square w-full" : "aspect-[4/3] w-full";
-  return (
-    <div
-      className={`${cls} flex flex-col items-center justify-center gap-2 rounded-2xl bg-rose-100/60`}
-    >
-      <span className="text-3xl">📷</span>
-      <span className="text-xs font-medium text-[#b07a5a]">{label}</span>
-    </div>
-  );
-}
 
 export function Desayunos() {
   return (
@@ -116,7 +129,7 @@ export function Desayunos() {
         </p>
 
         <a
-          href={waLink("Hola! Quiero pedir un desayuno sorpresa 🧋")}
+          href={waLink("Hola! Quiero pedir un desayuno sorpresa")}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 rounded-2xl bg-[#25D366] px-7 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#1ebe5d] active:scale-95"
@@ -153,36 +166,56 @@ export function Desayunos() {
       </div>
 
       {/* ══ GALERÍA CON SWIPER ════════════════════════════════════════ */}
-      <div className="mb-12">
-        <p className="mb-1 text-center text-xs uppercase tracking-widest text-[#b07a5a]">
-          nuestros desayunos
+      <div className="mb-16">
+        <p className="mb-2 text-center text-xs uppercase tracking-[0.3em] text-[#b07a5a]">
+          galería premium
         </p>
-        <h2 className="mb-6 text-center text-2xl font-bold text-[#7c4a31] sm:text-3xl">
-          Así se ven por dentro 😍
+
+        <h2 className="mb-3 text-center text-3xl font-bold text-[#7c4a31]">
+          Nuestros Desayunos
         </h2>
+
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm text-[#9a6a50]">
+          Cada detalle está preparado cuidadosamente para sorprender a esa
+          persona especial.
+        </p>
 
         <Swiper
           modules={[Autoplay, Pagination]}
-          spaceBetween={16}
+          spaceBetween={20}
           slidesPerView={1}
           pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          breakpoints={{
-            480: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
           }}
-          className="!pb-10"
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="!pb-12"
         >
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <SwiperSlide key={n}>
-              <div className="overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(124,74,49,0.10)]">
-                <ImgPlaceholder size="sq" label={`Desayuno ${n}`} />
-                <div className="p-3">
-                  <p className="text-xs font-semibold text-[#5b3c2d]">
-                    Desayuno Sorpresa #{n}
+          {desayunos.map((img, index) => (
+            <SwiperSlide key={index}>
+              <div className="group overflow-hidden rounded-3xl bg-white shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={img}
+                    alt={`Desayuno ${index + 1}`}
+                    className="h-[280px] w-full object-cover transition duration-700 group-hover:scale-110"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+                </div>
+
+                <div className="p-4">
+                  <h3 className="font-semibold text-[#5b3c2d]">
+                    Desayuno Sorpresa #{index + 1}
+                  </h3>
+
+                  <p className="mt-1 text-sm text-[#9a6a50]">
+                    Preparado con ingredientes frescos y presentación especial.
                   </p>
-                  <p className="text-[11px] text-[#b07a5a]">Frappé Liz</p>
                 </div>
               </div>
             </SwiperSlide>
@@ -263,7 +296,11 @@ export function Desayunos() {
           {fotos.map(({ id, nombre, texto }) => (
             <SwiperSlide key={id}>
               <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(124,74,49,0.10)]">
-                <ImgPlaceholder size="sq" label={`Foto cliente ${id}`} />
+                <img
+                  src={entregas[id - 1]}
+                  alt={`Entrega ${id}`}
+                  className="h-100 w-full object-cover"
+                />
                 <div className="p-4">
                   <div className="mb-2 flex items-center gap-1 text-amber-400">
                     {[...Array(5)].map((_, i) => (
@@ -272,9 +309,6 @@ export function Desayunos() {
                   </div>
                   <p className="mb-3 text-xs leading-relaxed text-[#5b3c2d]">
                     "{texto}"
-                  </p>
-                  <p className="text-xs font-semibold text-[#b07a5a]">
-                    — {nombre}
                   </p>
                 </div>
               </div>

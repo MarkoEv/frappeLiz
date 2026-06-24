@@ -7,7 +7,11 @@ import {
   FiClock,
   FiExternalLink,
 } from "react-icons/fi";
-import { RiInstagramLine, RiTiktokLine } from "react-icons/ri";
+import {
+  RiFacebookBoxFill,
+  RiInstagramLine,
+  RiTiktokLine,
+} from "react-icons/ri";
 
 // Coordenadas de Frappé Liz, Cuautepec, Gro.
 const COORDS = { lat: 16.7008, lng: -99.0172 };
@@ -18,14 +22,12 @@ const MAP_EMBED = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.5!
 const COMO_LLEGAR = `https://www.google.com/maps/dir/?api=1&destination=${PLACE_QUERY}&destination_place_id=ChIJ`;
 
 const horarios = [
-  { dia: "Lunes – Viernes", hora: "9:00 – 20:00", abierto: true },
-  { dia: "Sábado", hora: "9:00 – 21:00", abierto: true },
-  { dia: "Domingo", hora: "10:00 – 18:00", abierto: true },
-  { dia: "Días festivos", hora: "Cerrado", abierto: false },
+  { dia: "Martes – Domingo", hora: "18:00 – 22:30", abierto: true },
+  { dia: "Lunes", hora: "Cerrado", abierto: false },
 ];
 
 function Contacto() {
-  const waLink = "https://wa.me/5216712345678"; // ← pon tu número real
+  const waLink = "https://wa.me/5217451119782"; // ← pon tu número real
 
   return (
     <section className="w-full px-4  sm:px-6 lg:px-8">
@@ -37,7 +39,6 @@ function Contacto() {
         <h1 className="text-3xl font-bold text-[#7c4a31] sm:text-4xl">
           Contáctanos
         </h1>
-        <p className="mt-2 text-sm text-[#9a6a50]">Con gusto te atendemos 🧋</p>
       </div>
 
       {/* Grid principal */}
@@ -48,7 +49,7 @@ function Contacto() {
             Escríbenos
           </p>
           <p className="mb-5 text-[15px] text-[#5b3c2d]">
-            Pedidos, reservaciones y dudas — respondemos rápido 🤙
+            Pedidos, reservaciones y dudas
           </p>
 
           <a
@@ -69,16 +70,16 @@ function Contacto() {
           {/* Redes sociales */}
           <div className="mt-4 flex gap-3">
             <a
-              href="#"
+              href="https://www.facebook.com/liizbetth.mrtnzferiia"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-rose-100 py-2.5 text-sm font-medium text-[#5b3c2d] transition hover:bg-rose-50"
             >
-              <RiInstagramLine size={18} className="text-[#E1306C]" />
-              Instagram
+              <RiFacebookBoxFill size={18} className="text-[#3b5998]" />
+              Facebook
             </a>
             <a
-              href="#"
+              href="https://www.tiktok.com/@frappeliz"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-rose-100 py-2.5 text-sm font-medium text-[#5b3c2d] transition hover:bg-rose-50"
@@ -145,7 +146,7 @@ function Contacto() {
               <div>
                 <p className="text-xs text-[#b07a5a]">Teléfono</p>
                 <p className="text-sm font-medium text-[#3a2a20]">
-                  671 234 5678
+                  745 111 9782
                 </p>
               </div>
             </div>
@@ -179,19 +180,6 @@ function Contacto() {
                 </span>
               </div>
             ))}
-          </div>
-
-          {/* Correo */}
-          <div className="mt-5 flex items-center gap-3 rounded-xl border border-rose-100 p-3">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-rose-50 text-[#7c4a31]">
-              <FiMail size={16} />
-            </span>
-            <div>
-              <p className="text-xs text-[#b07a5a]">Correo</p>
-              <p className="text-sm font-medium text-[#3a2a20]">
-                hola@frappeliz.com
-              </p>
-            </div>
           </div>
         </div>
       </div>

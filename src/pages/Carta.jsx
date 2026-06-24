@@ -4,15 +4,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { RiDrinks2Line } from "react-icons/ri";
 import {
   FaCoffee,
   FaIceCream,
   FaCookieBite,
   FaAppleAlt,
   FaLeaf,
+  FaHamburger,
+  FaGlassWhiskey,
 } from "react-icons/fa";
-
+import { MdOutlineFreeBreakfast, MdBakeryDining } from "react-icons/md";
+import { RiDrinks2Line } from "react-icons/ri";
 function Carta() {
   const navigate = useNavigate();
 
@@ -64,42 +66,48 @@ function Carta() {
     },
   ];
 
+  const iconClass =
+    "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]";
+
   const categories = {
     frappes: {
-      icon: (
-        <RiDrinks2Line className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]" />
-      ),
+      icon: <RiDrinks2Line className={iconClass} />,
       label: "Frappés",
     },
+
     esquimos: {
-      icon: (
-        <FaAppleAlt className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]" />
-      ),
+      icon: <FaIceCream className={iconClass} />,
       label: "Esquimos",
     },
+
     snacks: {
-      icon: (
-        <FaCookieBite className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]" />
-      ),
+      icon: <FaCookieBite className={iconClass} />,
       label: "Snacks",
     },
-    calientes: {
-      icon: (
-        <FaCoffee className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]" />
-      ),
-      label: "Calientes",
+
+    tortas: {
+      icon: <MdBakeryDining className={iconClass} />,
+      label: "Tortas",
     },
-    smoothies: {
-      icon: (
-        <FaLeaf className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]" />
-      ),
-      label: "Smoothies",
+
+    hamburguesas: {
+      icon: <FaHamburger className={iconClass} />,
+      label: "Hamburguesas",
     },
-    postres: {
-      icon: (
-        <FaIceCream className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#7c4a31]" />
-      ),
-      label: "Postres",
+
+    waffles: {
+      icon: <MdOutlineFreeBreakfast className={iconClass} />,
+      label: "Waffles",
+    },
+
+    crepas: {
+      icon: <FaCookieBite className={iconClass} />,
+      label: "Crepas",
+    },
+
+    bebidas: {
+      icon: <FaGlassWhiskey className={iconClass} />,
+      label: "Bebidas",
     },
   };
 
@@ -114,7 +122,7 @@ function Carta() {
           {displayText}
         </h1>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">
           {Object.entries(categories).map(([key, category]) => (
             <button
               key={key}
