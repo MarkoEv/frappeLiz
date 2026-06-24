@@ -5,47 +5,57 @@ const frappes = [
   {
     id: 1,
     tag: "clasico",
-    emoji: "☕",
-    name: "Frappé de café",
-    desc: "Café espresso, leche entera y hielo. Cremoso y reconfortante.",
+    name: "Frappé de Café",
+    desc: "Café espresso, leche entera y hielo frappé.",
     price: "$65",
+    image: "https://placehold.co/600x400",
   },
   {
     id: 2,
-    tag: "clasico",
-    emoji: "🍫",
-    name: "Frappé moka",
+    tag: "especial",
+    name: "Frappé Moka",
     desc: "Chocolate oscuro, espresso doble y crema batida.",
     price: "$70",
+    image: "https://placehold.co/600x400",
   },
   {
     id: 3,
     tag: "clasico",
-    emoji: "🍦",
-    name: "Frappé vainilla",
-    desc: "Vainilla natural, leche condensada y hielo cremoso.",
+    name: "Frappé Vainilla",
+    desc: "Vainilla natural y leche cremosa.",
     price: "$65",
+    image: "https://placehold.co/600x400",
   },
   {
     id: 4,
-    tag: "frutal",
-    emoji: "🍓",
-    name: "Frappé fresa",
-    desc: "Fresas frescas, leche y un toque de limón.",
+    tag: "clasico",
+    name: "Frappé de Fresa",
+    desc: "Fresas frescas, leche y un toque especial.",
     price: "$70",
+    image: "https://placehold.co/600x400",
+  },
+  {
+    id: 5,
+    tag: "especial",
+    name: "Frappé Oreo",
+    desc: "Galleta Oreo triturada y crema batida.",
+    price: "$75",
+    image: "https://placehold.co/600x400",
+  },
+  {
+    id: 6,
+    tag: "especial",
+    name: "Frappé Nutella",
+    desc: "Nutella original y leche cremosa.",
+    price: "$80",
+    image: "https://placehold.co/600x400",
   },
 ];
 
-const tagBg = {
-  clasico: "bg-amber-50",
-  frutal: "bg-rose-50",
-  especial: "bg-green-50",
-};
-
 const filters = [
   { key: "todos", label: "Todos" },
-  { key: "clasico", label: "Clásico" },
-  { key: "especial", label: "Especial" },
+  { key: "clasico", label: "Clásicos" },
+  { key: "especial", label: "Especiales" },
 ];
 
 function Frappes() {
@@ -56,33 +66,36 @@ function Frappes() {
     active === "todos" ? frappes : frappes.filter((f) => f.tag === active);
 
   return (
-    <section className="rounded-2xl bg-white/90 p-8 shadow-[0_22px_60px_rgba(124,74,49,0.1)] md:p-12">
+    <section className="rounded-3xl bg-white p-4 sm:p-6 md:p-8 shadow-[0_20px_60px_rgba(124,74,49,0.08)]">
       {/* Header */}
-      <div className="flex items-center gap-4 border-b border-rose-100 pb-6 mb-6">
+      <div className="mb-6 flex items-center gap-3 border-b border-rose-100 pb-5">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 rounded-xl border border-rose-200 bg-white px-4 py-2 text-sm text-[#7c4a31] transition-colors hover:bg-rose-50 active:scale-[0.98]"
+          className="rounded-xl border border-rose-200 bg-white px-3 py-2 text-sm font-medium text-[#7c4a31] transition hover:bg-rose-50"
         >
           ← Volver
         </button>
+
         <div>
-          <h1 className="font-bold text-2xl sm:text-3xl text-[#7c4a31] leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#7c4a31]">
             Frappés
           </h1>
-          <p className="text-sm text-[#b07a5a] mt-0.5">Bebidas frías</p>
+          <p className="text-xs sm:text-sm text-[#b07a5a]">
+            Bebidas frías preparadas al momento
+          </p>
         </div>
       </div>
 
       {/* Filtros */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="mb-6 flex flex-wrap gap-2">
         {filters.map((f) => (
           <button
             key={f.key}
             onClick={() => setActive(f.key)}
-            className={`rounded-full border px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
+            className={`rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${
               active === f.key
-                ? "bg-[#7c4a31] text-white border-[#7c4a31]"
-                : "border-rose-200 text-[#7c4a31] hover:bg-rose-50"
+                ? "bg-[#7c4a31] text-white"
+                : "border border-rose-200 text-[#7c4a31] hover:bg-rose-50"
             }`}
           >
             {f.label}
@@ -90,43 +103,46 @@ function Frappes() {
         ))}
       </div>
 
-      {/* Grid de productos */}
+      {/* Productos */}
       {filtered.length === 0 ? (
-        <p className="text-center text-sm text-[#b07a5a] py-12">
-          Sin productos en esta categoría.
-        </p>
+        <div className="py-12 text-center text-[#b07a5a]">
+          No hay productos en esta categoría.
+        </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {filtered.map((frappe) => (
             <div
               key={frappe.id}
-              className="flex flex-col overflow-hidden rounded-xl border border-rose-100 bg-white transition-shadow hover:shadow-md"
+              className="group overflow-hidden rounded-xl border border-rose-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              {/* Imagen / placeholder */}
-              <div
-                className={`flex items-center justify-center text-4xl h-32 ${
-                  tagBg[frappe.tag] ?? "bg-rose-50"
-                }`}
-              >
-                {frappe.emoji}
+              {/* Imagen */}
+              <div className="relative h-32 sm:h-36 md:h-40 overflow-hidden">
+                <img
+                  src={frappe.image}
+                  alt={frappe.name}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+
+                {/* Precio */}
+                <div className="absolute right-2 top-2 rounded-full bg-[#7c4a31] px-3 py-1 text-xs font-bold text-white shadow-lg">
+                  {frappe.price}
+                </div>
+
+                {/* Categoría */}
+                <div className="absolute left-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#7c4a31] backdrop-blur">
+                  {frappe.tag}
+                </div>
               </div>
 
-              {/* Contenido */}
-              <div className="flex flex-1 flex-col p-3">
-                <span className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-[#b07a5a]">
-                  {frappe.tag}
-                </span>
-                <p className="text-sm font-bold text-[#7c4a31] leading-snug mb-1">
+              {/* Información */}
+              <div className="p-3">
+                <h3 className="mb-1 line-clamp-2 text-sm md:text-base font-bold text-[#7c4a31]">
                   {frappe.name}
-                </p>
-                <p className="text-[11px] text-[#b07a5a] leading-relaxed flex-1">
+                </h3>
+
+                <p className="line-clamp-2 text-xs md:text-sm leading-relaxed text-[#b07a5a]">
                   {frappe.desc}
                 </p>
-                <div className="mt-3 flex items-center justify-between">
-                  <span className="text-sm font-bold text-[#7c4a31]">
-                    {frappe.price}
-                  </span>
-                </div>
               </div>
             </div>
           ))}

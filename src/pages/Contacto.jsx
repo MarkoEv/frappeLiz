@@ -13,7 +13,7 @@ import {
   RiTiktokLine,
 } from "react-icons/ri";
 
-import liz from "../../public/desayunos/liz.jpeg";
+import liz from "../../public/images/tienda.jpeg";
 
 // Coordenadas de Frappé Liz, Cuautepec, Gro.
 const COORDS = { lat: 16.7008, lng: -99.0172 };

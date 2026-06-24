@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
+import { MdFastfood } from "react-icons/md";
+
 import "swiper/css/pagination";
 import {
   FaCoffee,
@@ -15,6 +17,14 @@ import {
 } from "react-icons/fa";
 import { MdOutlineFreeBreakfast, MdBakeryDining } from "react-icons/md";
 import { RiDrinks2Line } from "react-icons/ri";
+import { MdCookie } from "react-icons/md";
+import { LiaHamburgerSolid } from "react-icons/lia";
+import { GiPoolTriangle } from "react-icons/gi";
+import { TbCookieFilled } from "react-icons/tb";
+import { RiDrinksFill } from "react-icons/ri";
+import { LiaCookieSolid } from "react-icons/lia";
+import { FaHotdog } from "react-icons/fa";
+
 function Carta() {
   const navigate = useNavigate();
 
@@ -74,38 +84,23 @@ function Carta() {
       icon: <RiDrinks2Line className={iconClass} />,
       label: "Frappés",
     },
-    hamburguesas: {
-      icon: <FaHamburger className={iconClass} />,
-      label: "Hamburguesas",
-    },
-
-    tortas: {
-      icon: <MdBakeryDining className={iconClass} />,
-      label: "Tortas",
+    snacks: {
+      icon: <MdFastfood className={iconClass} />,
+      label: "Snacks",
     },
     waffles: {
-      icon: <MdOutlineFreeBreakfast className={iconClass} />,
+      icon: <TbCookieFilled className={iconClass} />,
       label: "Waffles",
     },
 
     crepas: {
-      icon: <FaCookieBite className={iconClass} />,
+      icon: <GiPoolTriangle className={iconClass} />,
       label: "Crepas",
     },
 
     esquimos: {
-      icon: <RiDrinks2Line className={iconClass} />,
-      label: "Esquimos",
-    },
-
-    snacks: {
-      icon: <FaCookieBite className={iconClass} />,
-      label: "Snacks",
-    },
-
-    bebidas: {
-      icon: <FaGlassWhiskey className={iconClass} />,
-      label: "Bebidas",
+      icon: <RiDrinksFill className={iconClass} />,
+      label: "Eskimos",
     },
   };
 
