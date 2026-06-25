@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { FiBook, FiMapPin } from "react-icons/fi";
 import { MdDeliveryDining } from "react-icons/md";
+import { FaWhatsapp } from "react-icons/fa";
 import logo from "../../public/logos/vasos.png";
 
 const links = [
@@ -11,7 +12,7 @@ const links = [
     label: "Desayunos",
     icon: <MdDeliveryDining size={22} />,
   },
-  { to: "/contacto", label: "Contacto", icon: <FiMapPin size={20} /> },
+  { to: "/contacto", label: "Contacto", icon: <FaWhatsapp size={20} /> },
 ];
 
 const phrases = [
@@ -86,7 +87,7 @@ function Nav() {
                 to={to}
                 end={to === "/"}
                 className={({ isActive }) =>
-                  `flex items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-xs font-semibold transition-all w-full
+                  `flex items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-[10px] font-semibold transition-all w-full
                   ${isActive ? "bg-[#7c4a31] text-white shadow-md" : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100 hover:text-[#7c4a31]"}`
                 }
               >
@@ -101,6 +102,25 @@ function Nav() {
       {/* ── TABLET (768px – 1023px): logo arriba centrado, frase + botones abajo en fila ── */}
       <div className="hidden md:flex lg:hidden flex-col gap-3">
         {/* Fila 1: logo centrado + frase */}
+
+        {/* Fila 2: botones más grandes con descripción */}
+        <ul className="flex gap-3">
+          {links.map(({ to, label, icon }) => (
+            <li key={to} className="flex-1">
+              <NavLink
+                to={to}
+                end={to === "/"}
+                className={({ isActive }) =>
+                  `flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all w-full
+                  ${isActive ? "bg-[#7c4a31] text-white shadow-md" : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100 hover:text-[#7c4a31]"}`
+                }
+              >
+                {icon}
+                {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
         <div className="flex items-center gap-4">
           <NavLink
             to="/"
@@ -123,24 +143,6 @@ function Nav() {
             </p>
           </div>
         </div>
-        {/* Fila 2: botones más grandes con descripción */}
-        <ul className="flex gap-3">
-          {links.map(({ to, label, icon }) => (
-            <li key={to} className="flex-1">
-              <NavLink
-                to={to}
-                end={to === "/"}
-                className={({ isActive }) =>
-                  `flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all w-full
-                  ${isActive ? "bg-[#7c4a31] text-white shadow-md" : "bg-rose-50 text-[#5b3c2d] hover:bg-rose-100 hover:text-[#7c4a31]"}`
-                }
-              >
-                {icon}
-                {label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
       </div>
 
       {/* ── DESKTOP (≥ 1024px): una sola fila ── */}
