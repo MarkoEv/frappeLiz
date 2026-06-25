@@ -145,40 +145,44 @@ const beneficios = [
 liz;
 export function Desayunos() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8">
-      {/* ══ HERO ══════════════════════════════════════════════════════ */}
-      <div className="relative mb-12 overflow-hidden rounded-3xl text-center">
-        {/* Imagen */}
-        <img
-          src={liz}
-          alt="Desayuno sorpresa"
-          className="h-[500px] w-full object-cover"
-        />
+    <section className="w-full">
+      {/* ══ HERO UNIVERSAL (SPLIT-SCREEN ADAPTATIVO) ══════════════════════════════════════════════════════ */}
+      <div className="relative mb-12 overflow-hidden rounded-3xl bg-gradient-to-br from-stone-50 to-orange-50/50 border border-stone-200/60 shadow-sm grid grid-cols-1 md:grid-cols-12 items-stretch">
+        {/* IMAGEN: Superior en móvil, lateral en escritorio. Ocupa 5 columnas en pantallas grandes */}
+        <div className="relative w-full h-[240px] sm:h-[320px] md:h-auto md:col-span-5 overflow-hidden">
+          <img
+            src={liz}
+            alt="Desayuno sorpresa"
+            className="w-full h-full object-cover select-none"
+          />
+          {/* Degradado sutil inferior exclusivo para móviles para suavizar el corte con el fondo */}
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-50/50 via-transparent to-transparent md:hidden" />
+        </div>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        {/* TEXTO Y CONTENIDO: Abajo en móvil, al lado en escritorio. Ocupa 7 columnas */}
+        <div className="p-6 sm:p-10 md:p-8 lg:p-14 md:col-span-7 flex flex-col justify-center text-center md:text-left">
+          {/* Título adaptable */}
+          <h1 className="mb-3 text-2xl sm:text-4xl lg:text-5xl font-extrabold text-stone-800 tracking-tight leading-tight md:leading-none">
+            Haz que su mañana <br className="hidden sm:block" />
+            <span className="text-[#7c4a31]">sea inolvidable</span>
+          </h1>
 
-        {/* Contenido */}
-        <div className="absolute inset-0 flex items-end">
-          <div className="p-6 sm:p-10 lg:p-12">
-            <h1 className="mb-3 max-w-2xl text-3xl font-bold text-white sm:text-5xl">
-              Haz que su mañana
-              <span className="block text-rose-300">sea inolvidable</span>
-            </h1>
+          {/* Descripción adaptable */}
+          <p className="mb-6 max-w-md mx-auto md:mx-0 text-xs sm:text-sm lg:text-base leading-relaxed text-stone-600">
+            Desayunos preparados cuidadosamente, presentación especial y entrega
+            a domicilio para sorprender a quien más quieres.
+          </p>
 
-            <p className="mb-6 max-w-lg text-sm leading-relaxed text-white/90 sm:text-base">
-              Desayunos preparados cuidadosamente, presentación especial y
-              entrega a domicilio para sorprender a quien más quieres.
-            </p>
-
+          {/* Botón de WhatsApp de ancho completo en móvil, auto en escritorio */}
+          <div className="w-full md:w-auto">
             <a
               href={waLink("Hola! Quiero pedir un desayuno sorpresa")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-2xl bg-[#25D366] px-7 py-4 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#1ebe5d]"
+              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto rounded-2xl bg-[#25D366] px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-white shadow-md shadow-emerald-500/20 transition-all duration-300 hover:scale-[1.02] hover:bg-[#1ebe5d] active:scale-95"
             >
-              <FaWhatsapp size={20} />
-              Contáctanos
+              <FaWhatsapp className="text-lg sm:text-xl" />
+              Ordenar una Sorpresa
             </a>
           </div>
         </div>
