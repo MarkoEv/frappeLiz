@@ -5,9 +5,6 @@ import { Footer } from "./components/Footer.jsx";
 import { Desayunos } from "./pages/Desayunos.jsx";
 import { Contacto } from "./pages/Contacto.jsx";
 import { Carta } from "./pages/Carta.jsx";
-import { Frappes } from "./pages/Frappes";
-import { Esquimos } from "./pages/Esquimos.jsx";
-import { Snacks } from "./pages/Snacks.jsx";
 
 function App() {
   return (
@@ -22,9 +19,6 @@ function App() {
               <Route path="/" element={<Carta />} />
               <Route path="/desayunos" element={<Desayunos />} />
               <Route path="/contacto" element={<Contacto />} />
-              <Route path="/carta/frappes" element={<Frappes />} />
-              <Route path="/carta/esquimos" element={<Esquimos />} />
-              <Route path="/carta/Snacks" element={<Snacks />} />
             </Routes>
           </main>
           <footer>
