@@ -1,50 +1,39 @@
+import tresleches from "../../public/products/skimos/tresleches.png";
+import fresa from "../../public/products/skimos/fresa.png";
+import chocolate from "../../public/products/skimos/chocolate.png";
+import vainilla from "../../public/products/skimos/vainilla.png";
+
 export const eskimos = [
   {
     id: 7,
     tag: "eskimos",
-    name: "skimo de Café",
+    name: "Skimo de Chocolate",
     desc: "Café espresso, leche entera y hielo skimo.",
     price: "$65",
-    image: "https://placehold.co/200x200",
+    image: chocolate,
   },
   {
     id: 8,
     tag: "eskimos",
-    name: "skimo Moka",
+    name: "Skimo de Vainilla",
     desc: "Chocolate oscuro, espresso doble y crema batida.",
     price: "$70",
-    image: "https://placehold.co/200x200",
+    image: vainilla,
   },
   {
     id: 9,
     tag: "eskimos",
-    name: "skimo Vainilla",
+    name: "Skimo de 3 Leches",
     desc: "Vainilla natural y leche cremosa.",
     price: "$65",
-    image: "https://placehold.co/200x200",
+    image: tresleches,
   },
   {
     id: 10,
     tag: "eskimos",
-    name: "skimo de Fresa",
+    name: "Skimo de Fresa",
     desc: "Fresas frescas, leche y un toque especial.",
     price: "$70",
-    image: "https://placehold.co/200x200",
-  },
-  {
-    id: 11,
-    tag: "eskimos",
-    name: "skimo Oreo",
-    desc: "Galleta Oreo triturada y crema batida.",
-    price: "$75",
-    image: "https://placehold.co/200x200",
-  },
-  {
-    id: 12,
-    tag: "eskimos",
-    name: "skimo Nutella",
-    desc: "Nutella original y leche cremosa.",
-    price: "$80",
-    image: "https://placehold.co/200x200",
+    image: fresa,
   },
 ];
