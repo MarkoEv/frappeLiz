@@ -21,7 +21,6 @@ function Carta() {
 
   const categories = {
     frappes: { icon: <RiDrinks2Line />, label: "Frappés" },
-    hamburguesas: { icon: <FaHamburger />, label: "Hamburguesas" },
     waffles: { icon: <TbCookieFilled />, label: "Waffles" },
     tortas: { icon: <LiaHamburgerSolid />, label: "Tortas" },
     snacks: { icon: <MdFastfood />, label: "Snacks" },
@@ -148,7 +147,7 @@ function Carta() {
         <>
           {/* Vista Cards */}
           {viewMode === "cards" && (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
               {productosFiltrados.map((p) => (
                 <div
                   key={p.id}

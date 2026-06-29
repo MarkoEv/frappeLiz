@@ -1,7 +1,14 @@
 import torreWaffle from "../../public/products/wafles/torre.webp";
-import waffleCajeta from "../../public/products/wafles/cajeta.webp";
-import waffleVainilla from "../../public/products/wafles/vainilla.png";
-import nutellaWaffle from "../../public/products/wafles/nutella.webp";
+import fresa from "../../public/products/wafles/fresa.png";
+import cajeta from "../../public/products/wafles/cajeta.png";
+import chocolate from "../../public/products/wafles/chocolate.png";
+import fresaconcrema from "../../public/products/wafles/fresaconcrema.png";
+import lechera from "../../public/products/wafles/lechera.png";
+import mermelada from "../../public/products/wafles/mermelada.png";
+import nutella from "../../public/products/wafles/nutella.png";
+import nutellaPlatano from "../../public/products/wafles/nutellaPlatano.jpg";
+import philadelfia from "../../public/products/wafles/philadelfia.png";
+import zarzamora from "../../public/products/wafles/zarzamora.png";
 
 export const waffles = [
   {
@@ -15,18 +22,26 @@ export const waffles = [
   {
     id: 125,
     tag: "waffles",
-    name: "Waffle Moka",
+    name: "Waffle de Fresa/Plátano",
     desc: "Chocolate oscuro, espresso doble y crema batida.",
     price: "$70",
-    image: waffleVainilla,
+    image: fresa,
+  },
+  {
+    id: 126,
+    tag: "waffles",
+    name: "Waffle de Lechera",
+    desc: "Leche entera y un toque especial.",
+    price: "$75",
+    image: lechera,
   },
   {
     id: 129,
     tag: "waffles",
-    name: "Waffle Nutella",
+    name: "Waffle Nutella con Platano",
     desc: "Nutella original y leche cremosa.",
     price: "$80",
-    image: nutellaWaffle,
+    image: nutellaPlatano,
   },
   {
     id: 130,
@@ -34,7 +49,7 @@ export const waffles = [
     name: "Waffle de Philadelphia",
     desc: "Philadelphia fresca, leche y un toque especial.",
     price: "$70",
-    image: waffleVainilla,
+    image: philadelfia,
   },
   {
     id: 131,
@@ -42,7 +57,7 @@ export const waffles = [
     name: "Waffle de Cajeta",
     desc: "Cajeta fresca, leche y un toque especial.",
     price: "$70",
-    image: waffleCajeta,
+    image: cajeta,
   },
   {
     id: 132,
@@ -50,7 +65,7 @@ export const waffles = [
     name: "Waffle de Mermelada",
     desc: "Mermelada fresca, leche y un toque especial.",
     price: "$70",
-    image: waffleVainilla,
+    image: mermelada,
   },
   {
     id: 133,
@@ -58,7 +73,7 @@ export const waffles = [
     name: "Waffle de zarzamora",
     desc: "Zarzamora fresca, leche y un toque especial.",
     price: "$70",
-    image: waffleVainilla,
+    image: zarzamora,
   },
   {
     id: 134,
@@ -66,7 +81,7 @@ export const waffles = [
     name: "Waffle de Chocolate",
     desc: "Chocolate fresco, leche y un toque especial.",
     price: "$70",
-    image: waffleVainilla,
+    image: chocolate,
   },
   {
     id: 135,
@@ -74,6 +89,6 @@ export const waffles = [
     name: "Waffle de Fresas con crema y helado",
     desc: "Fresas frescas, crema y un toque especial.",
     price: "$70",
-    image: waffleVainilla,
+    image: fresaconcrema,
   },
 ];
