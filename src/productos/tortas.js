@@ -11,15 +11,23 @@ export const tortas = [
     tag: "tortas",
     name: "Torta de Jamón",
     desc: "Jamón, verduras frescas y aderezos.",
-    price: "$70",
+    price: "$45",
     image: jamon,
   },
   {
     id: 324,
     tag: "tortas",
     name: "Torta de Salchicha",
-    desc: "Salchicha dorada con verduras y aderezo.",
-    price: "$70",
+    desc: "Salchicha dorada con verduras.",
+    price: "$45",
+    image: salchicha,
+  },
+  {
+    id: 3274,
+    tag: "tortas",
+    name: "Torta de Salchicha y Queso Oaxaca",
+    desc: "Salchicha dorada con verduras y Queso Oaxaca.",
+    price: "$65",
     image: salchicha,
   },
   {
@@ -27,7 +35,7 @@ export const tortas = [
     tag: "tortas",
     name: "Torta de Queso Amarillo",
     desc: "Queso amarillo fundido y vegetales frescos.",
-    price: "$70",
+    price: "$45",
     image: quesoamarillo,
   },
   {
@@ -35,7 +43,7 @@ export const tortas = [
     tag: "tortas",
     name: "Torta de Pollo Frito/Empanizado",
     desc: "Pollo crujiente acompañado de verduras frescas.",
-    price: "$70",
+    price: "$45",
     image: pollo,
   },
   {
@@ -43,7 +51,7 @@ export const tortas = [
     tag: "tortas",
     name: "Torta Cubana",
     desc: "Combinación especial de carnes y quesos.",
-    price: "$70",
+    price: "$95",
     image: cubana,
   },
   {
@@ -51,7 +59,7 @@ export const tortas = [
     tag: "tortas",
     name: "Torta Oaxaca",
     desc: "Quesillo Oaxaca con ingredientes tradicionales.",
-    price: "$70",
+    price: "$45",
     image: oaxaca,
   },
 ];

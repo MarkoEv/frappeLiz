@@ -9,7 +9,7 @@ export const eskimos = [
     tag: "eskimos",
     name: "Skimo de Chocolate",
     desc: "Café espresso, leche entera y hielo skimo.",
-    price: "$65",
+    price: "$35",
     image: chocolate,
   },
   {
@@ -17,7 +17,7 @@ export const eskimos = [
     tag: "eskimos",
     name: "Skimo de Vainilla",
     desc: "Chocolate oscuro, espresso doble y crema batida.",
-    price: "$70",
+    price: "$35",
     image: vainilla,
   },
   {
@@ -25,7 +25,7 @@ export const eskimos = [
     tag: "eskimos",
     name: "Skimo de 3 Leches",
     desc: "Vainilla natural y leche cremosa.",
-    price: "$65",
+    price: "$35",
     image: tresleches,
   },
   {
@@ -33,7 +33,7 @@ export const eskimos = [
     tag: "eskimos",
     name: "Skimo de Fresa",
     desc: "Fresas frescas, leche y un toque especial.",
-    price: "$70",
+    price: "$35",
     image: fresa,
   },
 ];
