@@ -5,13 +5,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { MdFastfood } from "react-icons/md";
-import { RiDrinks2Line, RiDrinksFill } from "react-icons/ri";
+import { RiDrinks2Line, RiCupLine, RiCake3Line } from "react-icons/ri";
 import { GiPoolTriangle } from "react-icons/gi";
 import { TbCookieFilled } from "react-icons/tb";
-import { FaChevronLeft, FaChevronRight, FaHamburger } from "react-icons/fa";
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaHamburger,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { allProducts } from "../productos/allProducts";
 import { FiGrid, FiList } from "react-icons/fi";
 import { LiaHamburgerSolid } from "react-icons/lia";
+import { GiIceCreamCone, GiHotDog } from "react-icons/gi";
 
 function Carta() {
   const [filtroActivo, setFiltroActivo] = React.useState(null);
@@ -20,12 +26,38 @@ function Carta() {
   const swiperRef = React.useRef(null);
 
   const categories = {
-    frappes: { icon: <RiDrinks2Line />, label: "Frappés" },
-    waffles: { icon: <TbCookieFilled />, label: "Waffles" },
-    tortas: { icon: <LiaHamburgerSolid />, label: "Tortas" },
-    snacks: { icon: <MdFastfood />, label: "Snacks" },
-    crepas: { icon: <GiPoolTriangle />, label: "Crepas" },
-    eskimos: { icon: <RiDrinksFill />, label: "Eskimos" },
+    frappes: {
+      icon: <RiDrinks2Line />,
+      label: "Frappés",
+    },
+    waffles: {
+      icon: <TbCookieFilled />,
+      label: "Waffles",
+    },
+    tortas: {
+      icon: <LiaHamburgerSolid />,
+      label: "Tortas",
+    },
+    snacks: {
+      icon: <MdFastfood />,
+      label: "Snacks",
+    },
+    crepas: {
+      icon: <RiCake3Line />,
+      label: "Crepas",
+    },
+    eskimos: {
+      icon: <GiIceCreamCone />,
+      label: "Eskimos",
+    },
+    banderillas: {
+      icon: <GiHotDog />,
+      label: "Banderillas",
+    },
+    bebidas: {
+      icon: <RiCupLine />,
+      label: "Bebidas",
+    },
   };
 
   const productosFiltrados = filtroActivo
@@ -56,6 +88,16 @@ function Carta() {
       {label}
     </button>
   );
+
+  // animation modal salida
+  const [isClosing, setIsClosing] = React.useState(false);
+  const cerrarModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setProductoSeleccionado(null);
+      setIsClosing(false);
+    }, 250);
+  };
 
   return (
     <div className="flex flex-col gap-5 px-1">
@@ -245,51 +287,106 @@ function Carta() {
 
           {productoSeleccionado && (
             <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
-              onClick={() => setProductoSeleccionado(null)}
+              className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-[#1a120c]/60 backdrop-blur-sm transition-opacity duration-250 ${
+                isClosing ? "opacity-0" : "opacity-100"
+              }`}
+              onClick={cerrarModal}
             >
               <div
                 onClick={(e) => e.stopPropagation()}
-                className="bg-white rounded-3xl overflow-hidden max-w-md w-full shadow-2xl animate-in fade-in zoom-in duration-200"
+                className={`relative bg-white w-full sm:max-w-md rounded-t-[28px] sm:rounded-[28px] overflow-hidden transition-transform duration-250 ease-out ${
+                  isClosing
+                    ? "translate-y-full sm:translate-y-4 sm:opacity-0"
+                    : "translate-y-0 sm:opacity-100"
+                }`}
               >
-                <div className="relative">
+                {/* Botón cerrar */}
+                <button
+                  onClick={cerrarModal}
+                  aria-label="Cerrar"
+                  className="absolute top-3.5 right-3.5 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-sm flex items-center justify-center text-stone-600 hover:bg-white transition"
+                >
+                  <span className="text-base">✕</span>
+                </button>
+
+                {/* Header con imagen pequeña */}
+                <div className="flex gap-3.5 px-5 pt-5">
                   <img
                     src={productoSeleccionado.image}
                     alt={productoSeleccionado.name}
-                    className="w-full h-64 object-cover"
+                    className="w-24 h-24 rounded-2xl object-cover shrink-0"
                   />
-
-                  <button
-                    onClick={() => setProductoSeleccionado(null)}
-                    className="absolute top-3 right-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur text-stone-700 font-bold"
-                  >
-                    ✕
-                  </button>
-                </div>
-
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <h2 className="text-xl font-bold text-stone-800">
+                  <div className="flex-1 min-w-0 flex flex-col justify-center pr-8">
+                    <span className="text-[11px] tracking-widest uppercase text-[#7c4a31] font-medium">
+                      {categories[productoSeleccionado.tag]?.label}
+                    </span>
+                    <h2 className="mt-1 text-[19px] font-bold text-stone-800 leading-tight">
                       {productoSeleccionado.name}
                     </h2>
-
-                    <span className="text-lg font-bold text-[#7c4a31] whitespace-nowrap">
+                    <span className="mt-1.5 text-xl font-bold text-stone-900">
                       {productoSeleccionado.price}
                     </span>
                   </div>
+                </div>
 
-                  <p className="mt-4 text-sm text-stone-600 leading-relaxed">
-                    {productoSeleccionado.desc}
-                  </p>
+                {/* Descripción */}
+                <p className="px-5 pt-4 text-sm text-stone-500 leading-relaxed">
+                  {productoSeleccionado.desc ||
+                    "Disfruta de esta deliciosa especialidad preparada al momento."}
+                </p>
 
+                {/* Productos relacionados (misma categoría) */}
+                {(() => {
+                  const relacionados = allProducts.filter(
+                    (p) =>
+                      p.tag === productoSeleccionado.tag &&
+                      p.id !== productoSeleccionado.id,
+                  );
+
+                  if (relacionados.length === 0) return null;
+
+                  return (
+                    <div className="pt-4">
+                      <p className="px-5 mb-2 text-xs text-stone-400">
+                        También te puede gustar
+                      </p>
+                      <Swiper
+                        slidesPerView="auto"
+                        spaceBetween={10}
+                        freeMode
+                        modules={[FreeMode]}
+                        className="!px-5 !pb-1"
+                      >
+                        {relacionados.map((p) => (
+                          <SwiperSlide key={p.id} className="!w-[72px]">
+                            <button
+                              onClick={() => setProductoSeleccionado(p)}
+                              className="w-[72px] h-[72px] rounded-2xl border-2 border-stone-200 hover:border-[#7c4a31] overflow-hidden p-[3px] transition-colors"
+                            >
+                              <img
+                                src={p.image}
+                                alt={p.name}
+                                className="w-full h-full rounded-xl object-cover"
+                              />
+                            </button>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  );
+                })()}
+
+                {/* Footer: WhatsApp */}
+                <div className="p-5">
                   <a
-                    href={`https://wa.me/527451119782?text=Hola,%20me%20interesa%20${encodeURIComponent(
-                      productoSeleccionado.name,
+                    href={`https://wa.me/527451119782?text=${encodeURIComponent(
+                      `Hola, me interesa ordenar: ${productoSeleccionado.name}`,
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 flex items-center justify-center w-full rounded-2xl bg-[#7c4a31] text-white py-3 font-medium hover:bg-[#5d3623] transition"
+                    className="w-full h-[52px] rounded-2xl bg-[#25D366] text-white font-semibold flex items-center justify-center gap-2 hover:brightness-95 active:scale-[0.98] transition"
                   >
+                    <FaWhatsapp className="text-lg" />
                     Pedir por WhatsApp
                   </a>
                 </div>
