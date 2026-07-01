@@ -1,15 +1,141 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
 
 <head>
   <meta charset="UTF-8" />
+
+  <!-- ── Favicons ── -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FrappéLiz</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- ── SEO ── -->
+  <title>FrappéLiz | Restaurante/Cafetería en Cuautepec, Guerrero – Desayunos sorpresas a domicilio</title>
+  <meta name="description"
+    content="FrappéLiz, Restaurante/Cafetería en Cuautepec, Guerrero, México. Disfruta desayunos, frappés y café de especialidad en un ambiente acogedor. Pedidos por WhatsApp. Consulta nuestra carta y horarios." />
+  <meta name="keywords"
+    content="cafeteria en cuautepec, cafeteria en guerrero,frappe liz,restaurante Cuautepec, frappés Guerrero, desayunos Cuautepec, café de especialidad, cafetería cerca de mí, FrappéLiz" />
+  <meta name="author" content="FrappéLiz" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://www.frappeliz.com/" />
+
+  <!-- ── Idioma / región ── -->
+  <meta http-equiv="content-language" content="es-MX" />
+
+  <!-- ── Geo tags — refuerzan la señal de negocio local ── -->
+  <meta name="geo.region" content="MX-GRO" />
+  <meta name="geo.placename" content="Cuautepec, Guerrero" />
+  <meta name="geo.position" content="16.7497383;-99.0023121" />
+  <meta name="ICBM" content="16.7497383, -99.0023121" />
+
+  <!-- ── Open Graph (Facebook, WhatsApp, etc.) ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FrappéLiz" />
+  <meta property="og:title" content="FrappéLiz | Cafetería en Cuautepec, Guerrero" />
+  <meta property="og:description"
+    content="Desayunos, frappés y café de especialidad. Pedidos, reservaciones y dudas por WhatsApp." />
+  <meta property="og:image" content="https://www.frappeliz.com/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://www.frappeliz.com/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="FrappéLiz — cafetería en Cuautepec, Guerrero" />
+  <meta property="og:url" content="https://www.frappeliz.com/" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="restaurant:contact_info:phone_number" content="+52 671 234 5678" />
+
+  <!-- ── Twitter / X Card ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FrappéLiz | Cafetería en Cuautepec, Guerrero" />
+  <meta name="twitter:description" content="Desayunos, frappés y café de especialidad. Pedidos por WhatsApp." />
+  <meta name="twitter:image" content="https://www.frappeliz.com/og-image.jpg" />
+  <meta name="twitter:image:alt" content="FrappéLiz — cafetería en Cuautepec, Guerrero" />
+
+  <!-- ── Theme / apariencia en navegadores móviles ── -->
+  <meta name="theme-color" content="#7c4a31" />
+  <meta name="background-color" content="#fdf6f0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="FrappéLiz" />
+  <meta name="format-detection" content="telephone=yes" />
+
+  <!-- ── Resource hints — mejora Core Web Vitals ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+  <!-- ── Datos estructurados (JSON-LD) — clave para SEO local / Google Maps / rich results ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CafeOrCoffeeShop",
+        "@id": "https://www.frappeliz.com/#negocio",
+        "name": "FrappéLiz",
+        "image": "https://www.frappeliz.com/og-image.jpg",
+        "logo": "https://www.frappeliz.com/favicon.svg",
+        "url": "https://www.frappeliz.com/",
+        "telephone": "+526712345678",
+        "priceRange": "$$",
+        "servesCuisine": ["Café", "Desayunos", "Frappés"],
+        "menu": "https://www.frappeliz.com/carta",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Reforma",
+          "addressLocality": "Cuautepec",
+          "addressRegion": "Guerrero",
+          "postalCode": "41840",
+          "addressCountry": "MX"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "16.7497383",
+          "longitude": "-99.0023121"
+        },
+        "hasMap": "https://www.google.com/maps?q=16.7497383,-99.0023121",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "18:00",
+            "closes": "22:30"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/liizbetth.mrtnzferiia"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.frappeliz.com/#sitio",
+        "url": "https://www.frappeliz.com/",
+        "name": "FrappéLiz",
+        "publisher": { "@id": "https://www.frappeliz.com/#negocio" },
+        "inLanguage": "es-MX"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- ── Fallback para bots que no ejecutan JS (WhatsApp/Facebook a veces) ── -->
+  <noscript>
+    <div style="padding:40px;font-family:sans-serif;color:#3a2a20;text-align:center">
+      <h1>FrappéLiz — Cafetería en Cuautepec, Guerrero</h1>
+      <p>Comida, frappés y desayunos sorpresa . Abrimos de martes a domingo, 18:00–22:30. Contáctanos por WhatsApp
+        al +52 671 234 5678.</p>
+    </div>
+  </noscript>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
