@@ -31,7 +31,9 @@ function Footer() {
         </a>
       </div>
       <div>
-        <img src={logo} alt="Logo" className="h-30 w-30" />
+        <a href="https://frappeliz.com" rel="noopener noreferrer">
+          <img src={logo} alt="Logo" className="h-30 w-30" />
+        </a>
       </div>
 
       {/* Redes */}

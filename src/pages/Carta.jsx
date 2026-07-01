@@ -29,6 +29,10 @@ function Carta() {
   const swiperRef = React.useRef(null);
 
   const categories = {
+    snacks: {
+      icon: <MdFastfood />,
+      label: "Snacks",
+    },
     frappes: {
       icon: <RiDrinks2Line />,
       label: "Frappés",
@@ -40,10 +44,6 @@ function Carta() {
     tortas: {
       icon: <LiaHamburgerSolid />,
       label: "Tortas",
-    },
-    snacks: {
-      icon: <MdFastfood />,
-      label: "Snacks",
     },
     crepas: {
       icon: <RiCake3Line />,

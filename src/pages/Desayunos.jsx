@@ -165,7 +165,7 @@ export function Desayunos() {
           </h1>
 
           {/* Descripción adaptable */}
-          <p className="mb-6 max-w-md mx-auto md:mx-0 text-xs sm:text-sm lg:text-base leading-relaxed text-stone-600">
+          <p className="mb-6 max-w-md mx-auto md:mx-0 text-xs sm:text-sm lg:text-base leading-relaxed text-[#9a6a50] ">
             Desayunos preparados cuidadosamente, presentación especial y entrega
             a domicilio para sorprender a quien más quieres.
           </p>
@@ -341,7 +341,7 @@ export function Desayunos() {
                       <FiStar key={i} size={12} fill="currentColor" />
                     ))}
                   </div>
-                  <p className="mb-3 text-xs leading-relaxed text-[#5b3c2d]">
+                  <p className="mb-3 text-sm italic leading-relaxed text-[#5b3c2d]">
                     "{texto}"
                   </p>
                 </div>
