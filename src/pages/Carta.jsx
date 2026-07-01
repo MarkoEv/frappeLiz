@@ -19,6 +19,9 @@ import { FiGrid, FiList } from "react-icons/fi";
 import { LiaHamburgerSolid } from "react-icons/lia";
 import { GiIceCreamCone, GiHotDog } from "react-icons/gi";
 
+// import image no-found
+import noFoundImage from "../../public/images/no-found.png";
+
 function Carta() {
   const [filtroActivo, setFiltroActivo] = React.useState(null);
   const [viewMode, setViewMode] = React.useState("cards");
@@ -102,7 +105,7 @@ function Carta() {
   return (
     <div className="flex flex-col gap-5 px-1">
       {/* Filtros */}
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-1.">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="shrink-0 w-7 h-7 rounded-full border border-rose-100 bg-white text-stone-400 hover:text-[#7c4a31] hover:border-rose-300 transition-colors flex items-center justify-center"
@@ -203,7 +206,13 @@ function Carta() {
                       <img
                         src={p.image}
                         alt={p.name}
-                        className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null; // evita loop infinito si el fallback también falla
+                          e.currentTarget.src = noFoundImage;
+                        }}
+                        className="w-full h-full object-cover rounded-2xl "
                       />
 
                       {/* Precio flotante */}
@@ -255,6 +264,12 @@ function Carta() {
                     <img
                       src={p.image}
                       alt={p.name}
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null; // evita loop infinito si el fallback también falla
+                        e.currentTarget.src = noFoundImage;
+                      }}
                       className="w-24 h-24 rounded-xl object-cover"
                     />
 
@@ -304,7 +319,7 @@ function Carta() {
                 <button
                   onClick={cerrarModal}
                   aria-label="Cerrar"
-                  className="absolute top-3.5 right-3.5 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-sm flex items-center justify-center text-stone-600 hover:bg-white transition"
+                  className="absolute cursor-pointer top-3.5 right-3.5 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-sm flex items-center justify-center text-stone-600 hover:bg-white transition"
                 >
                   <span className="text-base">✕</span>
                 </button>
@@ -315,6 +330,10 @@ function Carta() {
                     src={productoSeleccionado.image}
                     alt={productoSeleccionado.name}
                     className="w-24 h-24 rounded-2xl object-cover shrink-0"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = noFoundImage;
+                    }}
                   />
                   <div className="flex-1 min-w-0 flex flex-col justify-center pr-8">
                     <span className="text-[11px] tracking-widest uppercase text-[#7c4a31] font-medium">
@@ -366,7 +385,11 @@ function Carta() {
                               <img
                                 src={p.image}
                                 alt={p.name}
-                                className="w-full h-full rounded-xl object-cover"
+                                className="w-full h-full rounded-xl object-cover cursor-pointer"
+                                onError={(e) => {
+                                  e.currentTarget.onerror = null;
+                                  e.currentTarget.src = noFoundImage;
+                                }}
                               />
                             </button>
                           </SwiperSlide>

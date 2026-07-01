@@ -9,6 +9,27 @@ const WA_LINK =
 function Footer() {
   return (
     <footer className="mt-12 flex flex-col items-center gap-5 rounded-3xl  px-6 py-8 text-center">
+      {/* creador */}
+      <div className="flex items-center gap-2">
+        <span className="text-xs text-gray-400">Creado por</span>
+        <a
+          href="https://www.facebook.com/markoevang/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 pl-1.5 transition hover:border-gray-300 hover:bg-gray-50"
+        >
+          {/* ícono Facebook */}
+          <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-gray-100 bg-gray-100 text-[#1877f2] transition group-hover:bg-[#1877f2] group-hover:text-white">
+            <RiFacebookLine className="h-3.5 w-3.5" />
+          </span>
+          <span className="flex flex-col leading-none">
+            <span className="text-[11px] text-gray-400">@MarkoEv</span>
+            <span className="text-[13px] font-medium text-gray-800">
+              Facebook
+            </span>
+          </span>
+        </a>
+      </div>
       <div>
         <img src={logo} alt="Logo" className="h-30 w-30" />
       </div>
@@ -45,27 +66,6 @@ function Footer() {
       <p className="text-xs text-[#b07a5a]">
         © {new Date().getFullYear()} Frappé Liz
       </p>
-      {/* creador */}
-      <div className="flex items-center gap-2">
-        <span className="text-xs text-gray-400">Creado por</span>
-        <a
-          href="https://www.facebook.com/markoevang/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 pl-1.5 transition hover:border-gray-300 hover:bg-gray-50"
-        >
-          {/* ícono Facebook */}
-          <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-gray-100 bg-gray-100 text-[#1877f2] transition group-hover:bg-[#1877f2] group-hover:text-white">
-            <RiFacebookLine className="h-3.5 w-3.5" />
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-[11px] text-gray-400">@MarkoEv</span>
-            <span className="text-[13px] font-medium text-gray-800">
-              Facebook
-            </span>
-          </span>
-        </a>
-      </div>
     </footer>
   );
 }

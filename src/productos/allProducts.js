@@ -7,12 +7,12 @@ import { tortas } from "./tortas";
 import { banderillas } from "./banderillas";
 import { bebidas } from "./bebidas";
 export const allProducts = [
-  ...snacks,
   ...frappes,
-  ...eskimos,
-  ...waffles,
-  ...crepas,
   ...tortas,
+  ...waffles,
+  ...snacks,
+  ...crepas,
   ...banderillas,
+  ...eskimos,
   ...bebidas,
 ];

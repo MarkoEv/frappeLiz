@@ -23,9 +23,24 @@ const PLACE_QUERY = "Frappé+Liz+Cuautepec+Guerrero";
 const COMO_LLEGAR = `https://www.google.com/maps/dir/?api=1&destination=${PLACE_QUERY}&destination_place_id=ChIJ`;
 
 const horarios = [
-  { dia: "Martes – Domingo", hora: "18:00 – 22:30", abierto: true },
   { dia: "Lunes", hora: "Cerrado", abierto: false },
+  { dia: "Martes", hora: "18:00 – 22:30", abierto: true },
+  { dia: "Miércoles", hora: "18:00 – 22:30", abierto: true },
+  { dia: "Jueves", hora: "18:00 – 22:30", abierto: true },
+  { dia: "Viernes", hora: "18:00 – 22:30", abierto: true },
+  { dia: "Sábado", hora: "18:00 – 22:30", abierto: true },
+  { dia: "Domingo", hora: "18:00 – 22:30", abierto: true },
 ];
+const DIAS_SEMANA = [
+  "Domingo",
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sábado",
+];
+const hoy = DIAS_SEMANA[new Date().getDay()];
 
 function Contacto() {
   const waLink = "https://wa.me/5217451119782"; // ← pon tu número real
@@ -44,7 +59,9 @@ function Contacto() {
       {/* Grid principal */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {/* ── WhatsApp + Redes ── */}
-        <div className="flex flex-col rounded-2xl bg-white p-5 shadow-[0_8px_30px_rgba(124,74,49,0.10)] sm:col-span-2 lg:col-span-1">
+
+        {/* ── WhatsApp + Redes ── */}
+        <div className="flex flex-col rounded-2xl bg-white p-5 shadow-[0_8px_30px_rgba(124,74,49,0.10)] sm:col-span-2 lg:col-span-3">
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-[#b07a5a]">
             Escríbenos
           </p>
@@ -56,14 +73,15 @@ function Contacto() {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Chatear por WhatsApp al +52 745 111 9782"
             className="mt-auto flex items-center justify-center gap-3 rounded-xl bg-[#25D366] px-5 py-4 text-white transition hover:bg-[#1ebe5d] active:scale-95"
           >
-            <FaWhatsapp size={28} />
+            <FaWhatsapp size={28} aria-hidden="true" />
             <div className="text-left">
               <p className="text-base font-semibold leading-tight">
                 Chatear por WhatsApp
               </p>
-              <p className="text-xs text-white/80">+52 671 234 5678</p>
+              <p className="text-xs text-white/80">+52 745 111 9782</p>
             </div>
           </a>
 
@@ -73,25 +91,21 @@ function Contacto() {
               href="https://www.facebook.com/liizbetth.mrtnzferiia"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Facebook"
               className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-rose-100 py-2.5 text-sm font-medium text-[#5b3c2d] transition hover:bg-rose-50"
             >
-              <RiFacebookBoxFill size={18} className="text-[#3b5998]" />
+              <RiFacebookBoxFill
+                size={18}
+                className="text-[#3b5998]"
+                aria-hidden="true"
+              />
               Facebook
-            </a>
-            <a
-              href="https://www.tiktok.com/@frappeliz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-rose-100 py-2.5 text-sm font-medium text-[#5b3c2d] transition hover:bg-rose-50"
-            >
-              <RiTiktokLine size={18} />
-              TikTok
             </a>
           </div>
         </div>
 
         {/* ── Mapa + Dirección ── */}
-        <div className="flex flex-col rounded-2xl bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+        <div className="flex flex-col lg:col-span-2 rounded-2xl bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
           {" "}
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[#b07a5a]">
             Ubicación
@@ -172,26 +186,39 @@ function Contacto() {
           </p>
 
           <div className="space-y-2">
-            {horarios.map(({ dia, hora, abierto }) => (
-              <div
-                key={dia}
-                className="flex items-center justify-between rounded-lg bg-rose-50/60 px-3 py-2.5"
-              >
-                <div className="flex items-center gap-2 text-sm text-[#5b3c2d]">
-                  <FiClock size={13} className="shrink-0 text-[#b07a5a]" />
-                  {dia}
-                </div>
-                <span
-                  className={`rounded-full px-3 py-0.5 text-xs font-semibold ${
-                    abierto
-                      ? "bg-emerald-100 text-emerald-700"
-                      : "bg-gray-100 text-gray-500"
+            {horarios.map(({ dia, hora, abierto }) => {
+              const esHoy = dia === hoy;
+
+              return (
+                <div
+                  key={dia}
+                  className={`flex items-center justify-between rounded-lg px-3 py-2.5 ${
+                    esHoy ? "bg-amber-900/70" : "bg-rose-50/60"
                   }`}
                 >
-                  {hora}
-                </span>
-              </div>
-            ))}
+                  <div
+                    className={`flex items-center gap-2 text-sm ${
+                      esHoy ? "text-white" : "text-[#5b3c2d]"
+                    }`}
+                  >
+                    <FiClock
+                      size={13}
+                      className={`shrink-0 ${esHoy ? "text-white" : "text-[#b07a5a]"}`}
+                    />
+                    {dia}
+                  </div>
+                  <span
+                    className={`rounded-full px-3 py-0.5 text-xs font-semibold ${
+                      abierto
+                        ? "bg-emerald-100 text-emerald-700"
+                        : "bg-gray-100 text-gray-500"
+                    }`}
+                  >
+                    {hora}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>{" "}

@@ -106,7 +106,7 @@ export const snacks = [
     tag: "snacks",
     name: "Palomitas",
     desc: "Ligeras, crujientes y perfectas para acompañar tu bebida.",
-    price: "$0",
+    price: "$15",
     image: palomitas,
   },
   {

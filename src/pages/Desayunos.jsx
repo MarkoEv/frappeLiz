@@ -25,6 +25,7 @@ import desayuno3 from "../../public/desayunos/desayuno3.jpeg";
 import desayuno4 from "../../public/desayunos/desayuno4.jpeg";
 import desayuno5 from "../../public/desayunos/desayuno5.jpeg";
 import desayuno6 from "../../public/desayunos/desayuno6.jpeg";
+import desayuno7 from "../../public/desayunos/desayuno7.jpeg";
 
 const desayunos = [
   desayuno1,
@@ -33,19 +34,19 @@ const desayunos = [
   desayuno4,
   desayuno5,
   desayuno6,
+  desayuno7,
 ];
 
 // 6 imagenes de entregas
 import entrega1 from "../../public/desayunos/entregas1.jpeg";
 import entrega2 from "../../public/desayunos/entregas2.jpeg";
 import entrega3 from "../../public/desayunos/entregas3.jpeg";
-import entrega4 from "../../public/desayunos/entregas4.jpeg";
 import entrega5 from "../../public/desayunos/entregas5.jpeg";
-import entrega6 from "../../public/desayunos/entregas6.jpeg";
+import entrega4 from "../../public/desayunos/entregas6.jpeg";
 
-import liz from "../../public/desayunos/liz.jpeg";
+import hero from "../../public/desayunos/hero.webp";
 
-const entregas = [entrega1, entrega2, entrega3, entrega4, entrega5, entrega6];
+const entregas = [entrega1, entrega2, entrega3, entrega4, entrega5];
 
 // ── Configura tu número aquí ──────────────────────────────────────────
 const WA_NUMBER = "527451119782";
@@ -106,14 +107,10 @@ const fotos = [
   },
   {
     id: 4,
-    texto: "Calidad, sabor y presentación en un solo detalle.",
-  },
-  {
-    id: 5,
     texto: "Entrega puntual y experiencia completamente satisfactoria.",
   },
   {
-    id: 6,
+    id: 5,
     texto: "La mejor forma de hacer especial cualquier mañana.",
   },
 ];
@@ -142,7 +139,7 @@ const beneficios = [
     desc: "Elige lo que más le gusta a esa persona especial",
   },
 ];
-liz;
+hero;
 export function Desayunos() {
   return (
     <section className="w-full">
@@ -151,9 +148,9 @@ export function Desayunos() {
         {/* IMAGEN: Superior en móvil, lateral en escritorio. Ocupa 5 columnas en pantallas grandes */}
         <div className="relative w-full h-[240px] sm:h-[320px] md:h-auto md:col-span-5 overflow-hidden">
           <img
-            src={liz}
+            src={hero}
             alt="Desayuno sorpresa"
-            className="w-full h-full object-cover select-none"
+            className="w-full h-100 object-cover select-none "
           />
           {/* Degradado sutil inferior exclusivo para móviles para suavizar el corte con el fondo */}
           <div className="absolute inset-0 bg-gradient-to-t from-stone-50/50 via-transparent to-transparent md:hidden" />
