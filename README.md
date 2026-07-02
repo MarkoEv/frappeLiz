@@ -1,18 +1,65 @@
-# React + Vite
+# Frappé Liz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Menú interactivo para Frappé Liz, un sitio web de pedido y catálogo de productos basado en React y Vite.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Aplicación responsive que muestra una carta filtrable por categoría y ofrece contacto directo por WhatsApp. Ideal para un negocio pequeño con enfoque en bebidas, postres y desayunos.
 
-## React Compiler
+## Funcionalidad
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Navegación en `React Router` con rutas: `/`, `/desayunos`, `/contacto`
+- Carta de productos con filtros por categoría
+- Modos de vista: `cards` y `list`
+- Pantalla de carga inicial
+- Contacto directo por WhatsApp desde varias páginas
 
-Note: This will impact Vite dev & build performances.
+## Categorías incluidas
 
-## Expanding the ESLint configuration
+- `Snacks`
+- `Frappés`
+- `Waffles`
+- `Tortas`
+- `Crepas`
+- `Eskimos`
+- `Banderillas`
+- `Bebidas`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnología
+
+- React 19
+- Vite
+- Tailwind CSS 4
+- React Router DOM 7
+- Swiper
+- React Icons
+- ESLint
+
+## Estructura clave
+
+- `src/main.jsx` — punto de entrada
+- `src/App.jsx` — router y layout general
+- `src/components/` — `Nav`, `Footer`, `LoadingScreen`
+- `src/pages/` — `Carta`, `Desayunos`, `Contacto`, `Menu`
+- `src/productos/` — datos de menú y categorías
+- `public/` — imágenes y assets estáticos
+
+## Comandos
+
+- `pnpm install`
+- `pnpm dev`
+- `pnpm build`
+- `pnpm preview`
+- `pnpm lint`
+
+## Observaciones
+
+- WhatsApp está configurado en `src/pages/Desayunos.jsx` y `src/pages/Contacto.jsx`
+- `src/pages/Menu.jsx` es un placeholder y puede completarse según necesidad
+- Verificar que todas las imágenes en `public/` existan antes del despliegue
+
+## Sugerencias para producción
+
+- Actualizar números y enlaces de contacto reales
+- Completar la página `Menu` si se desea otra sección
+- Revisar bien los assets importados en `public/`
