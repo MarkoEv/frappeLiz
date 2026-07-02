@@ -9,20 +9,17 @@ import { Contacto } from "./pages/Contacto.jsx";
 import { Carta } from "./pages/Carta.jsx";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(
+    () => document.readyState !== "complete",
+  );
 
   useEffect(() => {
-    // Si ya terminó de cargar (ej. viene de caché del navegador)
-    if (document.readyState === "complete") {
-      setIsLoading(false);
-      return;
-    }
+    if (!isLoading) return;
 
     const handleLoad = () => setIsLoading(false);
     window.addEventListener("load", handleLoad);
-
     return () => window.removeEventListener("load", handleLoad);
-  }, []);
+  }, [isLoading]);
 
   if (isLoading) {
     return <LoadingScreen />;

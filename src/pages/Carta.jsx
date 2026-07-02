@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect, useRef } from "react";
 import { FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,27 +6,84 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { MdFastfood } from "react-icons/md";
 import { RiDrinks2Line, RiCupLine, RiCake3Line } from "react-icons/ri";
-import { GiPoolTriangle } from "react-icons/gi";
 import { TbCookieFilled } from "react-icons/tb";
-import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaHamburger,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaWhatsapp } from "react-icons/fa";
 import { allProducts } from "../productos/allProducts";
 import { FiGrid, FiList } from "react-icons/fi";
 import { LiaHamburgerSolid } from "react-icons/lia";
 import { GiIceCreamCone, GiHotDog } from "react-icons/gi";
+import { LazyImage } from "../components/LazyImage.jsx";
+import {
+  PageSkeletonHeader,
+  SkeletonCard,
+  SkeletonRow,
+} from "../components/Skeleton.jsx";
 
-// import image no-found
-import noFoundImage from "../../public/images/no-found.png";
+const Chip = ({ activo, onClick, icon, label }) => (
+  <button
+    onClick={onClick}
+    className={`
+      inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] sm:text-xs
+      font-medium tracking-wide whitespace-nowrap transition-all duration-200
+      active:scale-95 cursor-pointer select-none border
+      ${
+        activo
+          ? "bg-[#7c4a31] border-[#7c4a31] text-white"
+          : "bg-white border-rose-100 text-stone-500 hover:border-rose-300 hover:text-[#7c4a31]"
+      }
+    `}
+  >
+    {icon && (
+      <span
+        className={`text-sm leading-none ${activo ? "text-rose-200" : "text-[#7c4a31]"}`}
+      >
+        {icon}
+      </span>
+    )}
+    {label}
+  </button>
+);
 
 function Carta() {
-  const [filtroActivo, setFiltroActivo] = React.useState(null);
-  const [viewMode, setViewMode] = React.useState("cards");
-  const [productoSeleccionado, setProductoSeleccionado] = React.useState(null);
-  const swiperRef = React.useRef(null);
+  const [filtroActivo, setFiltroActivo] = useState(null);
+  const [viewMode, setViewMode] = useState("cards");
+  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [isClosing, setIsClosing] = useState(false);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setIsPageLoading(false), 360);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  const cerrarModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setProductoSeleccionado(null);
+      setIsClosing(false);
+    }, 250);
+  };
+
+  if (isPageLoading) {
+    return (
+      <div className="flex flex-col gap-5 px-1">
+        <div className="flex flex-col gap-4">
+          <PageSkeletonHeader />
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          <SkeletonRow />
+          <SkeletonRow />
+        </div>
+      </div>
+    );
+  }
 
   const categories = {
     snacks: {
@@ -66,41 +123,6 @@ function Carta() {
   const productosFiltrados = filtroActivo
     ? allProducts.filter((p) => p.tag === filtroActivo)
     : allProducts;
-
-  const Chip = ({ activo, onClick, icon, label }) => (
-    <button
-      onClick={onClick}
-      className={`
-        inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] sm:text-xs
-        font-medium tracking-wide whitespace-nowrap transition-all duration-200
-        active:scale-95 cursor-pointer select-none border
-        ${
-          activo
-            ? "bg-[#7c4a31] border-[#7c4a31] text-white"
-            : "bg-white border-rose-100 text-stone-500 hover:border-rose-300 hover:text-[#7c4a31]"
-        }
-      `}
-    >
-      {icon && (
-        <span
-          className={`text-sm leading-none ${activo ? "text-rose-200" : "text-[#7c4a31]"}`}
-        >
-          {icon}
-        </span>
-      )}
-      {label}
-    </button>
-  );
-
-  // animation modal salida
-  const [isClosing, setIsClosing] = React.useState(false);
-  const cerrarModal = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setProductoSeleccionado(null);
-      setIsClosing(false);
-    }, 250);
-  };
 
   return (
     <div className="flex flex-col gap-5 px-1">
@@ -203,16 +225,10 @@ function Carta() {
                   <div className="flex flex-col sm:flex-row gap-3">
                     {/* IMAGEN + PRECIO */}
                     <div className="relative w-full aspect-square sm:w-28 sm:h-28 shrink-0 flex flex-col items-center justify-center">
-                      <img
+                      <LazyImage
                         src={p.image}
                         alt={p.name}
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => {
-                          e.currentTarget.onerror = null; // evita loop infinito si el fallback también falla
-                          e.currentTarget.src = noFoundImage;
-                        }}
-                        className="w-full h-full object-cover rounded-2xl "
+                        className="w-full h-full object-cover rounded-2xl"
                       />
 
                       {/* Precio flotante */}
@@ -261,16 +277,11 @@ function Carta() {
                 >
                   {" "}
                   <div className="flex gap-4">
-                    <img
+                    <LazyImage
                       src={p.image}
                       alt={p.name}
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null; // evita loop infinito si el fallback también falla
-                        e.currentTarget.src = noFoundImage;
-                      }}
                       className="w-24 h-24 rounded-xl object-cover"
+                      wrapperClassName="shrink-0"
                     />
 
                     <div className="flex-1 min-w-0">
@@ -326,14 +337,11 @@ function Carta() {
 
                 {/* Header con imagen pequeña */}
                 <div className="flex gap-3.5 px-5 pt-5">
-                  <img
+                  <LazyImage
                     src={productoSeleccionado.image}
                     alt={productoSeleccionado.name}
                     className="w-24 h-24 rounded-2xl object-cover shrink-0"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = noFoundImage;
-                    }}
+                    wrapperClassName="shrink-0"
                   />
                   <div className="flex-1 min-w-0 flex flex-col justify-center pr-8">
                     <span className="text-[11px] tracking-widest uppercase text-[#7c4a31] font-medium">
@@ -382,14 +390,11 @@ function Carta() {
                               onClick={() => setProductoSeleccionado(p)}
                               className="w-[72px] h-[72px] rounded-2xl border-2 border-stone-200 hover:border-[#7c4a31] overflow-hidden p-[3px] transition-colors"
                             >
-                              <img
+                              <LazyImage
                                 src={p.image}
                                 alt={p.name}
                                 className="w-full h-full rounded-xl object-cover cursor-pointer"
-                                onError={(e) => {
-                                  e.currentTarget.onerror = null;
-                                  e.currentTarget.src = noFoundImage;
-                                }}
+                                wrapperClassName="overflow-hidden rounded-xl"
                               />
                             </button>
                           </SwiperSlide>

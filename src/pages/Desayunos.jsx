@@ -1,13 +1,19 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { FaWhatsapp } from "react-icons/fa";
-import { FiPackage, FiClock, FiStar, FiHeart } from "react-icons/fi";
+import { FiClock, FiStar, FiHeart } from "react-icons/fi";
 import { LuPartyPopper } from "react-icons/lu";
 import { MdDeliveryDining } from "react-icons/md";
+import { LazyImage } from "../components/LazyImage.jsx";
+import {
+  PageSkeletonHeader,
+  SkeletonCard,
+  SkeletonTile,
+} from "../components/Skeleton.jsx";
 
 import {
   FaChalkboardTeacher,
@@ -55,9 +61,6 @@ const waLink = (msg) =>
 
 const baseIcon = "text-[#7c4a31] transition-transform duration-300";
 
-const iconClass =
-  "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl " +
-  "text-[#7c4a31] transition-all duration-300 group-hover:scale-110"; // ── Eventos especiales ─────────────────────────────────────────────────
 const eventos = [
   {
     icon: <FaChalkboardTeacher className={baseIcon} />,
@@ -141,16 +144,43 @@ const beneficios = [
 ];
 hero;
 export function Desayunos() {
+  const [isPageLoading, setIsPageLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const timeout = window.setTimeout(() => setIsPageLoading(false), 360);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  if (isPageLoading) {
+    return (
+      <section className="w-full px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="space-y-6">
+          <PageSkeletonHeader />
+          <div className="grid gap-4 md:grid-cols-2">
+            <SkeletonCard />
+            <SkeletonCard />
+          </div>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <SkeletonTile key={index} />
+          ))}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full">
       {/* ══ HERO UNIVERSAL (SPLIT-SCREEN ADAPTATIVO) ══════════════════════════════════════════════════════ */}
       <div className="relative mb-12 overflow-hidden rounded-3xl bg-gradient-to-br from-stone-50 to-orange-50/50 border border-stone-200/60 shadow-sm grid grid-cols-1 md:grid-cols-12 items-stretch">
         {/* IMAGEN: Superior en móvil, lateral en escritorio. Ocupa 5 columnas en pantallas grandes */}
         <div className="relative w-full h-[240px] sm:h-[320px] md:h-auto md:col-span-5 overflow-hidden">
-          <img
+          <LazyImage
             src={hero}
             alt="Desayuno sorpresa"
-            className="w-full h-100 object-cover select-none "
+            className="w-full h-100 object-cover select-none"
           />
           {/* Degradado sutil inferior exclusivo para móviles para suavizar el corte con el fondo */}
           <div className="absolute inset-0 bg-gradient-to-t from-stone-50/50 via-transparent to-transparent md:hidden" />
@@ -239,10 +269,10 @@ export function Desayunos() {
             <SwiperSlide key={index}>
               <div className="group overflow-hidden rounded-3xl bg-white shadow-lg transition duration-500 ">
                 <div className="relative overflow-hidden">
-                  <img
+                  <LazyImage
                     src={img}
                     alt={`Desayuno ${index + 1}`}
-                    className="h-[280px] w-full object-cover "
+                    className="h-[280px] w-full object-cover"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
@@ -327,10 +357,10 @@ export function Desayunos() {
           }}
           className="pb-10!"
         >
-          {fotos.map(({ id, nombre, texto }) => (
+          {fotos.map(({ id, texto }) => (
             <SwiperSlide key={id}>
               <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(124,74,49,0.10)]">
-                <img
+                <LazyImage
                   src={entregas[id - 1]}
                   alt={`Entrega ${id}`}
                   className="h-100 w-full object-cover"

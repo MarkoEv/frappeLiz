@@ -1,23 +1,16 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import {
-  FiMapPin,
-  FiPhone,
-  FiMail,
-  FiClock,
-  FiExternalLink,
-} from "react-icons/fi";
-import {
-  RiFacebookBoxFill,
-  RiInstagramLine,
-  RiTiktokLine,
-} from "react-icons/ri";
+import { FiMapPin, FiPhone, FiClock, FiExternalLink } from "react-icons/fi";
+import { RiFacebookBoxFill } from "react-icons/ri";
 
 import liz from "../../public/images/tienda.jpeg";
+import { LazyImage } from "../components/LazyImage.jsx";
+import {
+  PageSkeletonHeader,
+  SkeletonCard,
+  SkeletonRow,
+} from "../components/Skeleton.jsx";
 
-// Coordenadas de Frappé Liz, Cuautepec, Gro.
-const COORDS = { lat: 16.7008, lng: -99.0172 };
-const DIRECCION = "Rubén Mora, Barrio Primero, 41840 Cuautepec, Gro., México";
 const PLACE_QUERY = "Frappé+Liz+Cuautepec+Guerrero";
 
 const COMO_LLEGAR = `https://www.google.com/maps/dir/?api=1&destination=${PLACE_QUERY}&destination_place_id=ChIJ`;
@@ -44,6 +37,29 @@ const hoy = DIAS_SEMANA[new Date().getDay()];
 
 function Contacto() {
   const waLink = "https://wa.me/5217451119782"; // ← pon tu número real
+  const [isPageLoading, setIsPageLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const timeout = window.setTimeout(() => setIsPageLoading(false), 360);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  if (isPageLoading) {
+    return (
+      <section className="w-full px-4 sm:px-6 lg:px-8 space-y-8">
+        <PageSkeletonHeader />
+        <div className="grid gap-4 lg:grid-cols-3">
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+        <div className="space-y-4">
+          <SkeletonRow />
+          <SkeletonRow />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full px-4  sm:px-6 lg:px-8">
@@ -118,7 +134,7 @@ function Contacto() {
             className="group relative block overflow-hidden rounded-xl"
             title="Cómo llegar a Frappé Liz"
           >
-            <img
+            <LazyImage
               src={liz}
               alt="Ubicación Frappé Liz"
               className="w-full h-[185px] object-cover rounded-xl"
