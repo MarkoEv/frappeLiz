@@ -269,19 +269,13 @@ export function Desayunos() {
             <SwiperSlide key={index}>
               <div className="group overflow-hidden rounded-3xl bg-white shadow-lg transition duration-500 ">
                 <div className="relative overflow-hidden">
-                  <LazyImage
+                  <img
                     src={img}
                     alt={`Desayuno ${index + 1}`}
-                    className="h-[280px] w-full object-cover"
+                    className="h-[280px] w-full object-cover "
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-                </div>
-
-                <div className="p-4">
-                  <p className="mt-1 text-sm text-[#9a6a50]">
-                    Preparado con ingredientes frescos y presentación especial.
-                  </p>
                 </div>
               </div>
             </SwiperSlide>
@@ -357,10 +351,10 @@ export function Desayunos() {
           }}
           className="pb-10!"
         >
-          {fotos.map(({ id, texto }) => (
+          {fotos.map(({ id, nombre, texto }) => (
             <SwiperSlide key={id}>
               <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(124,74,49,0.10)]">
-                <LazyImage
+                <img
                   src={entregas[id - 1]}
                   alt={`Entrega ${id}`}
                   className="h-100 w-full object-cover"

@@ -63,7 +63,6 @@ function Contacto() {
 
   return (
     <section className="w-full px-4  sm:px-6 lg:px-8">
-      {/* Encabezado */}
       <div className="mb-8 text-center">
         <p className="mb-1 text-xs uppercase tracking-widest text-[#b07a5a]">
           ¿dónde encontrarnos?
@@ -72,11 +71,7 @@ function Contacto() {
           Contáctanos
         </h1>
       </div>
-      {/* Grid principal */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {/* ── WhatsApp + Redes ── */}
-
-        {/* ── WhatsApp + Redes ── */}
         <div className="flex flex-col rounded-2xl bg-white p-5 shadow-[0_8px_30px_rgba(124,74,49,0.10)] sm:col-span-2 lg:col-span-3">
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-[#b07a5a]">
             Escríbenos
@@ -101,7 +96,6 @@ function Contacto() {
             </div>
           </a>
 
-          {/* Redes sociales */}
           <div className="mt-4 flex gap-3">
             <a
               href="https://www.facebook.com/liizbetth.mrtnzferiia"
@@ -120,13 +114,11 @@ function Contacto() {
           </div>
         </div>
 
-        {/* ── Mapa + Dirección ── */}
         <div className="flex flex-col lg:col-span-2 rounded-2xl bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
           {" "}
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[#b07a5a]">
             Ubicación
           </p>
-          {/* Mapa — clic abre "cómo llegar" */}
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent("Frappé Liz, Rubén Mora, Barrio Primero, Cuautepec, Gro.")}`}
             target="_blank"
@@ -139,7 +131,6 @@ function Contacto() {
               alt="Ubicación Frappé Liz"
               className="w-full h-[185px] object-cover rounded-xl"
             />
-            {/* Overlay al hover */}
             <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
               <span className="flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#7c4a31] opacity-0 shadow-lg transition group-hover:translate-y-0 group-hover:opacity-100">
                 <FiExternalLink size={14} />
@@ -175,7 +166,6 @@ function Contacto() {
               </div>
             </div>
 
-            {/* boton de como llegar */}
             <div className="flex items-start gap-3">
               <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-50 text-[#7c4a31]">
                 <FiExternalLink size={15} />
@@ -195,7 +185,6 @@ function Contacto() {
           </div>
         </div>
 
-        {/* ── Horarios + Correo ── */}
         <div className="flex flex-col rounded-2xl bg-white p-5 shadow-[0_8px_30px_rgba(124,74,49,0.10)]">
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[#b07a5a]">
             Horarios
@@ -238,7 +227,6 @@ function Contacto() {
           </div>
         </div>
       </div>{" "}
-      {/* boton para subir a nav */}
       <div className="flex justify-center mt-8 md:hidden lg:hidden">
         <a
           href="#top"
