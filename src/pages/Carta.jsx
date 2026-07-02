@@ -281,7 +281,7 @@ function Carta() {
                       src={p.image}
                       alt={p.name}
                       className="w-24 h-24 rounded-xl object-cover"
-                      wrapperClassName="shrink-0"
+                      wrapperClassName="shrink-0 w-24 h-24"
                     />
 
                     <div className="flex-1 min-w-0">

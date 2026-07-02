@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import noFoundImage from "../../public/images/no-found.png";
 
 export function LazyImage({
@@ -12,10 +12,18 @@ export function LazyImage({
   const [loaded, setLoaded] = useState(false);
   const [imageSrc, setImageSrc] = useState(src);
 
+  useEffect(() => {
+    // Reset image state when the source changes so the new image shows the loading placeholder.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLoaded(false);
+    setImageSrc(src);
+  }, [src]);
+
   const handleLoad = () => setLoaded(true);
   const handleError = () => {
     if (imageSrc !== fallback) {
       setImageSrc(fallback);
+      setLoaded(false);
       return;
     }
     setLoaded(true);
