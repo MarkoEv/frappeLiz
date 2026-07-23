@@ -42,7 +42,7 @@ export const snacks = [
     tag: "snacks",
     name: "Hamburguesa Clásica c/Papas",
     desc: "Jugosa carne de res con vegetales frescos y papas a la francesa.",
-    price: "$70",
+    price: "$95",
     image: hambuconpapas,
   },
   {
@@ -50,7 +50,7 @@ export const snacks = [
     tag: "snacks",
     name: "Hamburguesa Clásica",
     desc: "Carne de res, lechuga, jitomate y cebolla en pan suave.",
-    price: "$95",
+    price: "$70",
     image: hamburguesa,
   },
   {
