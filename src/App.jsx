@@ -7,6 +7,7 @@ import { LoadingScreen } from "./components/LoadingScreen.jsx";
 import { Desayunos } from "./pages/Desayunos.jsx";
 import { Contacto } from "./pages/Contacto.jsx";
 import { Carta } from "./pages/Carta.jsx";
+import { NotFound } from "./pages/NotFound.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(
@@ -37,6 +38,7 @@ function App() {
               <Route path="/" element={<Carta />} />
               <Route path="/desayunos" element={<Desayunos />} />
               <Route path="/contacto" element={<Contacto />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <footer>
